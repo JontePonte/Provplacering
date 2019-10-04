@@ -1,6 +1,7 @@
 """ Main för provplacering """
 
 # Imports
+import turtle
 from ClassRoom import ClassRoom
 
 
@@ -19,7 +20,10 @@ class PlaceStudents:
 
         self.room = ClassRoom(info)      # Skapa klassrumet
         self.room.create_loactions()     # Skapa platser i klassrummet
-        self.show_room()
 
-        def show_room(self):
-            """ Rita upp klassrummet mha turtle grafics """
+    def show_room(self):
+        """ Anropa show room i room """
+        self.room.show_room()
+
+run = PlaceStudents()
+run.show_room()

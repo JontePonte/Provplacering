@@ -22,5 +22,9 @@ class ClassRoom:
                 # Skapa en plats med x- & y-koordinat
                 info = [x, y]
                 location = Location(info)
-                self.locations.append = location    # Spara i "locations"
+                self.locations.append(location)    # Spara i "locations"
 
+    def show_room(self):
+        """ Rita upp klassrummet mha turtle grafics """
+        self.screen = turtle.Screen()
+        self.screen.bgcolor("red")
