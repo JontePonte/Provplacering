@@ -4,6 +4,4 @@ class Location:
     def __init__(self, info):
         self.occupied = False
         self.student_name = " "
-        self.x_cor = info[0]
-        self.y_cor = info[1]
-
+        self.x_cor, self.y_cor = info
