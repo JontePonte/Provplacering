@@ -1,7 +1,7 @@
 """ Main för provplacering """
 
 # Imports
-import turtle
+import tkinter
 from ClassRoom import ClassRoom
 
 
@@ -26,9 +26,6 @@ class PlaceStudents:
 
         # Placera ut eleverna
         self.room.placement(self.students)
-
-    def show_room(self):
-        """ Anropa show room i room """
         self.room.show_room()
 
     def load_text(self, text):
@@ -43,4 +40,4 @@ class PlaceStudents:
 
 
 run = PlaceStudents()
-run.show_room()
+tkinter.mainloop()

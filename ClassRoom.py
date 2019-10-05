@@ -40,4 +40,4 @@ class ClassRoom:
     def show_room(self):
         """ Rita upp klassrummet mha turtle grafics """
         self.screen = turtle.Screen()
-        self.screen.bgcolor("red")
+        self.screen.screensize(500, 500)
