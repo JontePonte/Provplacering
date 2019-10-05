@@ -14,8 +14,21 @@ class ClassRoom:
         self.locations = []
         self.pen = turtle.Turtle()
         self.screen = turtle.Screen()
+        self.create_locations()     # Skapa platser i klassrummet
 
-    def create_loactions(self):
+    def placement(self, students):
+        """ Placera ut eleverna i klassrummet """
+        for i in range(len(students)):
+            self.locations[i].student_name = students[i]
+            self.locations[i].occupied = True
+
+        for location in self.locations:
+            print(location.student_name)
+            print(location.occupied)
+            print(location.x_cor)
+            print(location.y_cor)
+
+    def create_locations(self):
         """ Metod som skapar platserna i rummet """
         for x in range(self.x_num):
             for y in range(self.y_num):

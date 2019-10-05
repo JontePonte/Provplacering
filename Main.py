@@ -15,11 +15,9 @@ class PlaceStudents:
 
         # Möjliga varianter för provsal är "Aula", "Hörsal", "zigzag", "normal"
         room_type = "normal"
-
         info = [x_num, y_num, room_type]       # Samla info i info
 
         self.room = ClassRoom(info)      # Skapa klassrumet
-        self.room.create_loactions()     # Skapa platser i klassrummet
 
         # Ladda in klasslista
         self.students = self.load_text("test_list.txt")
@@ -27,19 +25,7 @@ class PlaceStudents:
             print(self.students[i])
 
         # Placera ut eleverna
-        self.placement()
-
-    def placement(self):
-        """ Placera ut eleverna i klassrummet """
-        for i in range(len(self.students)):
-            self.room.locations[i].student_name = self.students[i]
-            self.room.locations[i].occupied = True
-
-        for location in self.room.locations:
-            print(location.student_name)
-            print(location.occupied)
-            print(location.x_cor)
-            print(location.x_cor)
+        self.room.placement(self.students)
 
     def show_room(self):
         """ Anropa show room i room """
