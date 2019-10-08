@@ -5,14 +5,12 @@ class ClassRoom:
     """ Huvudklass för klassrummet. Den tar in information om storlek och platser mha info """
     def __init__(self, info):
         # Ta ut information ur info
-        self.x_num = info
+        self.x_num = info[0]
         self.y_num = info[1]
         self.room_type = info[2]
 
         # Skapa tom lista som fylls med skrivplatser
         self.locations = []
-        self.pen = turtle.Turtle()
-        self.screen = turtle.Screen()
         self.create_locations()     # Skapa platser i klassrummet
 
     def placement(self, students):

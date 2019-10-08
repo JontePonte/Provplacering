@@ -1,2 +1,8 @@
 
-Pelle, Agneta, Sara, Anders, Pelle2, Svullo, Henrik, Anders2
+Pelle,
+Agneta,
+Sara,
+Anders,
+Pelle2,
+Svullo,
+Henrik
