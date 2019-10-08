@@ -1,7 +1,6 @@
 """ Main för provplacering """
 
 # Imports
-import tkinter
 from ClassRoom import ClassRoom
 
 
@@ -26,7 +25,6 @@ class PlaceStudents:
 
         # Placera ut eleverna
         self.room.placement(self.students)
-        self.room.show_room()
 
     def load_text(self, text):
         """ Importera klasslista från textfil """
@@ -40,4 +38,3 @@ class PlaceStudents:
 
 
 run = PlaceStudents()
-tkinter.mainloop()

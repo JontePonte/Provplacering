@@ -1,6 +1,5 @@
-import turtle
+
 from Location import Location
-from Pen import Pen
 
 class ClassRoom:
     """ Huvudklass för klassrummet. Den tar in information om storlek och platser mha info """
@@ -36,9 +35,3 @@ class ClassRoom:
                 info = [x, y]
                 location = Location(info)
                 self.locations.append(location)    # Spara i "locations"
-
-    def show_room(self):
-        """ Rita upp klassrummet mha turtle grafics """
-        self.screen = turtle.Screen()
-        self.screen.screensize(500, 500)
-        self.pen = Pen()
