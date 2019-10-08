@@ -1,5 +1,7 @@
 
 from Location import Location
+import random
+
 
 class ClassRoom:
     """ Huvudklass för klassrummet. Den tar in information om storlek och platser mha info """
@@ -15,15 +17,17 @@ class ClassRoom:
 
     def placement(self, students):
         """ Placera ut eleverna i klassrummet """
+
+        num_students = len(students)
+        num_locations = len(self.locations)
+        students = students + ["Empty"]*(num_locations-num_students)
+        print(students)
+        random.shuffle(students)
+        print(students)
+
         for i in range(len(students)):
             self.locations[i].student_name = students[i]
             self.locations[i].occupied = True
-
-        for location in self.locations:
-            print(location.student_name)
-            print(location.occupied)
-            print(location.x_cor)
-            print(location.y_cor)
 
     def create_locations(self):
         """ Metod som skapar platserna i rummet """
