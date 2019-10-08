@@ -19,9 +19,10 @@ class PlaceStudents:
         self.room = ClassRoom(info)      # Skapa klassrumet
 
         # Ladda in klasslista
-        self.students = self.load_text("test_list.txt")
+        self.students = self.load_text("Elevlista.txt")
         for i in range(len(self.students)):
             print(self.students[i])
+        self.mf = self.load_text("MF.txt")      # mf = Misstänkt Fusk. Dessa hamnar inte nära varandra
 
         # Placera ut eleverna
         self.room.placement(self.students)
@@ -33,7 +34,7 @@ class PlaceStudents:
         """ Importera klasslista från textfil """
         with open(text) as f:
             list2 = []
-            f = f.read().split(',')                 # Dela upp hela texten vid ","
+            f = f.read().split(",")                 # Dela upp hela texten vid ","
             for item in f:
                 item = item.replace(" ", "").replace("\n", "")
                 list2.append(item)
