@@ -15,18 +15,41 @@ class ClassRoom:
         self.locations = []
         self.create_locations()     # Skapa platser i klassrummet
 
-    def placement(self, students):
+    def placement(self, students, mf):
         """ Placera ut eleverna i klassrummet """
 
+        # Plocka ut eleverna i mf listan från students
+        for student in students:
+            if "mf" in students:
+                students.remove(student)
+
+        # Sätt variabler för längden på alla listor
         num_students = len(students)
         num_locations = len(self.locations)
-        students = students + ["Empty"]*(num_locations-num_students)
-        random.shuffle(students)
-        print(students)
+        num_mf = len(mf)
+        # Fyll upp students med "Empty" tills students + mf är lika lång som locations
+        students += ["Empty"] * (num_locations - num_mf - num_students)
 
+        # Placera ut elever i mf
+        not_placed = len(mf)
+        for i in range(len(mf)):
+            while not_placed > 1:
+                if not self.locations[i].occupied:
+                    try:
+                        left = self.locations[i-1].occupied
+                    except "Exception":
+                        left = False
+                    try:
+                        right = self.locations[i + 1].occupied
+                    except "Exception":
+                        right = False
+
+
+        # Placera ut elever i students
         for i in range(len(students)):
-            self.locations[i].student_name = students[i]
-            self.locations[i].occupied = True
+            if not self.locations[i].occupied:
+                self.locations[i].student_name = students[i]
+                self.locations[i].occupied = True
 
     def create_locations(self):
         """ Metod som skapar platserna i rummet """

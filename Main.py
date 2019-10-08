@@ -25,7 +25,7 @@ class PlaceStudents:
         self.mf = self.load_text("MF.txt")      # mf = Misstänkt Fusk. Dessa hamnar inte nära varandra
 
         # Placera ut eleverna
-        self.room.placement(self.students)
+        self.room.placement(self.students, self.mf)
 
         # Skapa listan
         self.export_list()
