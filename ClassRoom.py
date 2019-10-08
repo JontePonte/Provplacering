@@ -21,7 +21,6 @@ class ClassRoom:
         num_students = len(students)
         num_locations = len(self.locations)
         students = students + ["Empty"]*(num_locations-num_students)
-        print(students)
         random.shuffle(students)
         print(students)
 
