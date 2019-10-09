@@ -30,6 +30,7 @@ class ClassRoom:
         # Fyll upp students med "Empty" tills students + mf är lika lång som locations
         students += ["Empty"] * (num_locations - num_mf - num_students)
 
+        """ PLACERAR BARA UT EN ELEV NU!!! """
         # Placera ut elever i mf
         for student in mf:
             placed = False
@@ -43,17 +44,20 @@ class ClassRoom:
                         # Om någon är upptagen så starta om
                         if location.occupied:
                             placed = False
-                # Placera ut eleven på platsen med koordinaterna x & y
-                for location in self.locations:
-                    if location.x_cor == x and location.y_cor == y:
-                        location.student_name = student
-                        location.occupied = True
+            # Placera ut eleven på platsen med koordinaterna x & y
+            for location in self.locations:
+                if location.x_cor == x and location.y_cor == y:
+                    location.student_name = student
+                    location.occupied = True
 
+        """ DENNA MÅSTE GÖRAS OM!!! """
+        """
         # Placera ut elever i students
         for i in range(len(students)):
             if not self.locations[i].occupied:
                 self.locations[i].student_name = students[i]
                 self.locations[i].occupied = True
+        """
 
     def create_locations(self):
         """ Metod som skapar platserna i rummet """
