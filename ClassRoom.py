@@ -31,18 +31,15 @@ class ClassRoom:
         students += ["Empty"] * (num_locations - num_mf - num_students)
 
         # Placera ut elever i mf
-        not_placed = len(mf)
         for i in range(len(mf)):
-            while not_placed > 1:
-                if not self.locations[i].occupied:
-                    try:
-                        left = self.locations[i-1].occupied
-                    except "Exception":
-                        left = False
-                    try:
-                        right = self.locations[i + 1].occupied
-                    except "Exception":
-                        right = False
+            not_placed = True
+            while not_placed:
+                x = random.randint(self.x_num)
+                y = random.randint(self.y_num)
+                for location in self.locations:
+                    if location.occupied:
+                        if location.x_cor - 1 <= x <= location.x_cor + 1 and location.y_cor - 1 <= y <= location.y_cor + 1:
+
 
 
         # Placera ut elever i students
