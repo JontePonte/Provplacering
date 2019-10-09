@@ -31,16 +31,23 @@ class ClassRoom:
         students += ["Empty"] * (num_locations - num_mf - num_students)
 
         # Placera ut elever i mf
-        for i in range(len(mf)):
-            not_placed = True
-            while not_placed:
-                x = random.randint(self.x_num)
-                y = random.randint(self.y_num)
+        for student in mf:
+            placed = False
+            while not placed:
+                x = random.randint(0, self.x_num)
+                y = random.randint(0, self.y_num)
+                placed = True           # Utgå från att det fungerar
+                # Kolla alla platser runt x & y
                 for location in self.locations:
-                    if location.occupied:
-                        if location.x_cor - 1 <= x <= location.x_cor + 1 and location.y_cor - 1 <= y <= location.y_cor + 1:
-
-
+                    if location.x_cor - 1 <= x <= location.x_cor + 1 and location.y_cor - 1 <= y <= location.y_cor + 1:
+                        # Om någon är upptagen så starta om
+                        if location.occupied:
+                            placed = False
+                # Placera ut eleven på platsen med koordinaterna x & y
+                for location in self.locations:
+                    if location.x_cor == x and location.y_cor == y:
+                        location.student_name = student
+                        location.occupied = True
 
         # Placera ut elever i students
         for i in range(len(students)):
