@@ -19,9 +19,8 @@ class ClassRoom:
         """ Placera ut eleverna i klassrummet """
 
         # Plocka ut eleverna i mf listan från students
-        for student in students:
-            if "mf" in students:
-                students.remove(student)
+        for student in mf:
+            students.remove(student)
 
         # Sätt variabler för längden på alla listor
         num_students = len(students)
@@ -30,42 +29,36 @@ class ClassRoom:
         # Fyll upp students med "Empty" tills students + mf är lika lång som locations
         students += ["Empty"] * (num_locations - num_mf - num_students)
 
-        """ PLACERAR BARA UT EN ELEV NU!!! """
-        # Placera ut elever i mf
+        # Placera ut eleverna i mf. De hamnar minst två platser ifrån varandra i x- & y-led
         for student in mf:
-            x = 0
-            y = 0
             placed = False
             while not placed:
-                x = random.randint(0, self.x_num)
-                y = random.randint(0, self.y_num)
-                x_left = min(0, (x-1))
-                x_right = max((x+1), self.x_num)
-                y_front = min((y-1), 0)
-                y_back = max((y+1), self.y_num)
-
-                """
+                x = random.randint(0, self.x_num-1)
+                y = random.randint(0, self.y_num-1)
                 # Kolla alla platser runt x & y
+                placed = True
                 for location in self.locations:
-                    if location.x_cor - 1 <= x <= location.x_cor + 1 and location.y_cor - 1 <= y <= location.y_cor + 1:
+                    if location.x_cor - 1 < x <= location.x_cor + 1 and location.y_cor - 1 <= y <= location.y_cor + 1:
                         # Om någon är upptagen så starta om
                         if location.occupied:
                             placed = False
-                """
+
             # Placera ut eleven på platsen med koordinaterna x & y
             for location in self.locations:
                 if location.x_cor == x and location.y_cor == y:
                     location.student_name = student
                     location.occupied = True
 
-        """ DENNA MÅSTE GÖRAS OM!!! """
-        """
         # Placera ut elever i students
-        for i in range(len(students)):
-            if not self.locations[i].occupied:
-                self.locations[i].student_name = students[i]
-                self.locations[i].occupied = True
-        """
+        random.shuffle(students)
+        i = 0
+        for location in self.locations:
+            if location.occupied:
+                pass
+            else:
+                location.student_name = students[i]
+                location.occupied = True
+                i += 1
 
     def create_locations(self):
         """ Metod som skapar platserna i rummet """
