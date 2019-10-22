@@ -9,8 +9,8 @@ class PlaceStudents:
     def __init__(self):
         """ Variabler som styr provsalens utseende """
 
-        self.x_num = 6       # Antal platser x-led
-        self.y_num = 6       # Antal platser y-led
+        self.x_num = 4       # Antal platser x-led
+        self.y_num = 10       # Antal platser y-led
 
         # Möjliga varianter för provsal är "Aula", "Hörsal", "zigzag", "normal"
         self.room_type = "normal"
