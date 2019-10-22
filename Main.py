@@ -9,8 +9,8 @@ class PlaceStudents:
     def __init__(self):
         """ Variabler som styr provsalens utseende """
 
-        self.x_num = 5       # Antal platser x-led
-        self.y_num = 5       # Antal platser y-led
+        self.x_num = 6       # Antal platser x-led
+        self.y_num = 6       # Antal platser y-led
 
         # Möjliga varianter för provsal är "Aula", "Hörsal", "zigzag", "normal"
         self.room_type = "normal"
@@ -34,9 +34,9 @@ class PlaceStudents:
         """ Importera klasslista från textfil """
         with open(text) as f:
             list2 = []
-            f = f.read().split(",")                 # Dela upp hela texten vid ","
+            f = f.read().split("\n")                 # Dela upp hela texten vid ","
             for item in f:
-                item = item.replace(" ", "").replace("\n", "")
+                item = item.replace(",", "").replace("\n", "")
                 list2.append(item)
         return list2
 
@@ -52,16 +52,22 @@ class PlaceStudents:
         file.write(",")
         file.write(str(self.y_num))
         file.write("],")
+        file.write("\n")
 
         # Spara information om alla platser
-        for location in self.room.locations:
-            file.write("[")
-            file.write(location.student_name)
-            file.write(",")
-            file.write(str(location.x_cor))
-            file.write(",")
-            file.write(str(location.y_cor))
-            file.write("],")
+        loc = self.room.locations
+        i = 0
+        for y in range(self.y_num):
+            for x in range(self.x_num):
+                file.write("[")
+                file.write(loc[i].student_name)
+                file.write(",")
+                file.write(str(loc[i].x_cor))
+                file.write(",")
+                file.write(str(loc[i].y_cor))
+                file.write("],")
+                i += 1
+            file.write("\n")            # Byt rad då y ökar
 
         file.close()
 
