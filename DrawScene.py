@@ -1,15 +1,8 @@
 
 import arcade
-from Draw_Functions import get_room_name
-from arcade import SpriteList, load_texture, start_render, draw_texture_rectangle, check_for_collision_with_list, \
-    window_commands, draw_rectangle_filled, play_sound, render_text
-from random import randrange
-from arcade.key import *
-
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-SCREEN_TITLE = get_room_name()
 
 
 class PlacementDraw(arcade.Window):
@@ -17,8 +10,14 @@ class PlacementDraw(arcade.Window):
     Rita upp classrummet och placera eleverna utifrån informationen i "Placement.txt"
     """
 
-    def __init__(self, width, height, title):
-        super().__init__(width, height, title)
+    def __init__(self, width, height, information):
+        super().__init__(width, height, information[0])
+
+        # Sortera informationen i "information"
+        self.room_name = information[0]
+        self.x_num = information[1]
+        self.y_num = information[2]
+        self.locations = information[3]
 
         arcade.set_background_color(arcade.color.WHITE)
 
@@ -82,8 +81,8 @@ class PlacementDraw(arcade.Window):
         pass
 
 
-def draw():
+def draw(information):
     """ Main method """
-    game = PlacementDraw(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+    game = PlacementDraw(SCREEN_WIDTH, SCREEN_HEIGHT, information)
     game.setup()
     arcade.run()

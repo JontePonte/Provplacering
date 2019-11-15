@@ -4,8 +4,6 @@
 from ClassRoom import ClassRoom
 from DrawScene import draw
 
-CALCULATE = True
-DRAW = True
 
 class PlaceStudents:
     """ Mainklass för att skapa klassrummet, placera ut eleverna och rita ut """
@@ -32,6 +30,16 @@ class PlaceStudents:
 
         # Skapa listan
         self.export_list()
+
+        """ Rita rummet """
+        # Samla ihop input till draw
+        info_to_draw = [
+            self.room_type,
+            self.x_num,
+            self.y_num,
+            self.room.locations
+            ]
+        draw(info_to_draw)
 
     def load_text(self, text):
         """ Importera klasslista från textfil """
@@ -75,8 +83,5 @@ class PlaceStudents:
         file.close()
 
 
-if CALCULATE:
-    run = PlaceStudents()
-
-if DRAW:
-    draw()
+""" Kör programmet """
+run = PlaceStudents()
