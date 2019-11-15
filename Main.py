@@ -2,7 +2,10 @@
 
 # Imports
 from ClassRoom import ClassRoom
+from ArcadeScene import draw
 
+CALCULATE = False
+DRAW = True
 
 class PlaceStudents:
     """ Mainklass för att skapa klassrummet, placera ut eleverna och rita ut """
@@ -72,4 +75,8 @@ class PlaceStudents:
         file.close()
 
 
-run = PlaceStudents()
+if CALCULATE:
+    run = PlaceStudents()
+
+if DRAW:
+    draw()

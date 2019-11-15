@@ -18,6 +18,7 @@ Skapa metod för placering av eleverna
 -  Lägg in blockering för elever som inte bör sitta nära
 
 Skapa medod för att rita upp klassrum med placering
-- [ ] Godot istället
+- [ ] Godot istället?
+- [ ] Arcade istället?
 - [ ] Få till klassrummet visuellt
 - [ ] Olika typer av bänkar
