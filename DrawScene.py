@@ -1,7 +1,7 @@
 
 import arcade
 
-SCREEN_WIDTH = 800
+SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 600
 
 
@@ -19,6 +19,27 @@ class PlacementDraw(arcade.Window):
         self.y_num = information[2]
         self.locations = information[3]
 
+        # Variabler som styrs av rummet
+        self.x_positions = []               # x-koordinater längst till vänster
+        self.y_positions = []               # y-koordinater högst upp
+        self.positions = []                 # x, y-koordinater för alla platser
+        self.location_height = 1
+        self.location_width = 1
+
+        if self.room_name == "aula":
+            self.x_positions = [
+                1 * SCREEN_HEIGHT / 7,
+                3 * SCREEN_HEIGHT / 7,
+                5 * SCREEN_HEIGHT / 7,
+                6 * SCREEN_HEIGHT / 7,
+            ]
+            for i in range(self.y_num):
+                self.y_positions = (i+1) * SCREEN_HEIGHT / self.y_num
+
+        # Samla ihop x & y - koordinater
+        for i in range(len(self.x_positions)):
+            pass #self.positions[i] = []
+
         arcade.set_background_color(arcade.color.WHITE)
 
         # If you have sprite lists, you should create them here,
@@ -28,16 +49,17 @@ class PlacementDraw(arcade.Window):
         # Create your sprites and sprite lists here
         pass
 
+    def draw_location(self, x, y):
+        """ Rita ut en skrivplats """
+        arcade.draw_lrtb_rectangle_filled(x, x + 100, y, y - 40,
+                                          arcade.color.DARK_BROWN)
+
     def on_draw(self):
         """
         Render the screen.
         """
-
-        # This command should happen before we start drawing. It will clear
-        # the screen to the background color, and erase what we drew last frame.
         arcade.start_render()
-
-        # Call draw() on all your sprite lists below
+        self.draw_location(400, 400)
 
     def on_update(self, delta_time):
         """
