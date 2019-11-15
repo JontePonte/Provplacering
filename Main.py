@@ -2,9 +2,9 @@
 
 # Imports
 from ClassRoom import ClassRoom
-from ArcadeScene import draw
+from DrawScene import draw
 
-CALCULATE = False
+CALCULATE = True
 DRAW = True
 
 class PlaceStudents:
@@ -16,7 +16,7 @@ class PlaceStudents:
         self.y_num = 6       # Antal platser y-led
 
         # Möjliga varianter för provsal är "Aula", "Hörsal", "zigzag", "normal"
-        self.room_type = "normal"
+        self.room_type = "Aula"
         info = [self.x_num, self.y_num, self.room_type]       # Samla info i info
 
         self.room = ClassRoom(info)      # Skapa klassrumet

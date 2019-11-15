@@ -1,13 +1,15 @@
 
 import arcade
+from Draw_Functions import get_room_name
 from arcade import SpriteList, load_texture, start_render, draw_texture_rectangle, check_for_collision_with_list, \
     window_commands, draw_rectangle_filled, play_sound, render_text
 from random import randrange
 from arcade.key import *
 
+
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-SCREEN_TITLE = "Starting Template"
+SCREEN_TITLE = get_room_name()
 
 
 class PlacementDraw(arcade.Window):
