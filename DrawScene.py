@@ -23,22 +23,24 @@ class PlacementDraw(arcade.Window):
         self.x_positions = []               # x-koordinater längst till vänster
         self.y_positions = []               # y-koordinater högst upp
         self.positions = []                 # x, y-koordinater för alla platser
-        self.location_height = 1
-        self.location_width = 1
 
-        if self.room_name == "aula":
+        self.x_bench_positions = []         # Bänkarnas x-position
+        self.y_bench_positions = []         # Bänkarnas y-position
+        self.bench_height = 1
+        self.bench_width = 1
+
+        if self.room_name == "Aula":
             self.x_positions = [
-                1 * SCREEN_HEIGHT / 7,
-                3 * SCREEN_HEIGHT / 7,
-                5 * SCREEN_HEIGHT / 7,
-                6 * SCREEN_HEIGHT / 7,
+                int(2 * SCREEN_HEIGHT / 8),
+                int(4 * SCREEN_HEIGHT / 8),
+                int(6 * SCREEN_HEIGHT / 8),
+                int(7 * SCREEN_HEIGHT / 8),
             ]
             for i in range(self.y_num):
-                self.y_positions = (i+1) * SCREEN_HEIGHT / self.y_num
+                self.y_positions = int((i+1) * SCREEN_HEIGHT / self.y_num)
 
-        # Samla ihop x & y - koordinater
-        for i in range(len(self.x_positions)):
-            pass #self.positions[i] = []
+            self.bench_height = int(SCREEN_HEIGHT / 30)
+            self.bench_width = int(SCREEN_WIDTH / 10)
 
         arcade.set_background_color(arcade.color.WHITE)
 
@@ -49,17 +51,19 @@ class PlacementDraw(arcade.Window):
         # Create your sprites and sprite lists here
         pass
 
-    def draw_location(self, x, y):
+    def draw_bench(self, x, y):
         """ Rita ut en skrivplats """
-        arcade.draw_lrtb_rectangle_filled(x, x + 100, y, y - 40,
-                                          arcade.color.DARK_BROWN)
+        arcade.draw_lrtb_rectangle_filled(x, x + self.bench_width, y, y - self.bench_height,
+                                          arcade.color.LIGHT_BROWN)
 
     def on_draw(self):
         """
         Render the screen.
         """
         arcade.start_render()
-        self.draw_location(400, 400)
+        for x in self.x_bench_positions:
+            for y in self.y_bench_positions:
+                self.draw_bench(x, y)
 
     def on_update(self, delta_time):
         """

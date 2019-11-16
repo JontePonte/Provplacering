@@ -15,6 +15,9 @@ class PlaceStudents:
 
         # Möjliga varianter för provsal är "Aula", "Hörsal", "zigzag", "normal"
         self.room_type = "Aula"
+        if self.room_type == "Aula":
+            self.x_num = 4
+            self.y_num = 20
         info = [self.x_num, self.y_num, self.room_type]       # Samla info i info
 
         self.room = ClassRoom(info)      # Skapa klassrumet
