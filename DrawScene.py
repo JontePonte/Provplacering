@@ -31,9 +31,6 @@ class PlacementDraw(arcade.Window):
 
         arcade.set_background_color(arcade.color.WHITE)
 
-        # If you have sprite lists, you should create them here,
-        # and set them to None
-
     def setup(self):
 
         if self.room_name == "Aula_Halvfull" or "Aula_Full" or "Aula":
@@ -61,11 +58,14 @@ class PlacementDraw(arcade.Window):
                 self.x_positions = self.x_bench_positions
 
             # Sätt y-koordinater för bänkarna i Aulan
-            for i in range(self.y_num):
-                self.y_bench_positions.append(int((i + 1) * SCREEN_HEIGHT / (self.y_num + 2)))
+            for i in range(20):
+                self.y_bench_positions.append(int((i + 1) * SCREEN_HEIGHT / (20 + 2)))
             # Sätt y-koordinater för skrivplatser i Aulan
             if self.room_name == "Aula_Halvfull":
                 self.y_positions = self.y_bench_positions[1::2]
+
+                print(len(self.x_positions))
+                print(len(self.y_positions))
             else:
                 self.y_positions = self.y_bench_positions
 

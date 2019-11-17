@@ -23,7 +23,8 @@ Skapa medod för att rita upp klassrum med placering
 - Arcade istället
 - Få till klassrummet visuellt
 - Placera ut möjliga platser i klassrummet
-- [ ] Skriva ut elevernas namn på platserna
+- Skriva ut elevernas namn på platserna
+- [ ] Snygga till platser och text
 - [ ] Ordna olika provrum
 - [ ] Animering av elever
 - [ ] Olika typer av bänkar
