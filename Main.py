@@ -15,6 +15,7 @@ class PlaceStudents:
 
         # Möjliga varianter för provsal är "Aula", "Hörsal", "zigzag", "normal"
         self.room_type = "Aula_Halvfull"
+
         if self.room_type == "Aula" or "Aula_Full":
             self.x_num = 5
             self.y_num = 20

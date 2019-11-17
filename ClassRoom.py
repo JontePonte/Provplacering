@@ -58,7 +58,8 @@ class ClassRoom:
                 pass
             else:
                 location.student_name = students[i]
-                location.occupied = True
+                if not location.student_name == "Empty":
+                    location.occupied = True
                 i += 1
 
     def create_locations(self):

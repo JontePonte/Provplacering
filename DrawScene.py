@@ -96,8 +96,9 @@ class PlacementDraw(arcade.Window):
 
         for location in self.locations:
             if location.occupied:
-                arcade.draw_text(location.student_name, self.x_positions[location.x_cor],
-                                 self.y_positions[location.y_cor] - self.bench_height, arcade.color.BLACK, 8)
+                arcade.draw_text(location.student_name, self.x_positions[location.x_cor] + 1,
+                                 self.y_positions[location.y_cor] + 1 - self.bench_height, arcade.color.BLACK,
+                                 int(self.bench_height / 2))
 
     def on_draw(self):
         """
