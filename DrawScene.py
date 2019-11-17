@@ -73,11 +73,11 @@ class PlacementDraw(arcade.Window):
         """ Rita ut en skrivplats """
         arcade.draw_lrtb_rectangle_filled(x, x + self.bench_width, y, y - self.bench_height,
                                           arcade.color.LIGHT_TAUPE)
+
     def draw_location(self, x, y):
         """ Rita ut en skrivplats """
         arcade.draw_lrtb_rectangle_filled(x, x + self.bench_width, y, y - self.bench_height,
                                           arcade.color.BLUE_GRAY)
-
 
     def draw_aula_scene(self):
         """ Rita ut en scenen i Aulan """
@@ -90,6 +90,14 @@ class PlacementDraw(arcade.Window):
         arcade.draw_text("Scen", x - int(y_width * 0.50), y - int(y_width * 0.95),
                          arcade.color.BLACK, int(y_width * 0.5))
 
+    def draw_student_names(self):
+        """ Rita ut elevernas namn på de platserna som slumpats fram """
+
+        for location in self.locations:
+            if location.occupied:
+                arcade.draw_text(location.student_name, self.x_positions[location.x_cor],
+                                 self.y_positions[location.y_cor] - self.bench_height, arcade.color.BLACK, 8)
+
     def on_draw(self):
         """
         Render the screen.
@@ -99,6 +107,9 @@ class PlacementDraw(arcade.Window):
         for x in self.x_bench_positions:
             for y in self.y_bench_positions:
                 self.draw_bench(x, y)
+
+        # Rita ut texten på elevernas namn
+        self.draw_student_names()
 
         # Rita ut scenen ifall provet är i Aulan
         if self.room_name == "Aula" or "Aula_Full" or "Aula_Halvfull":

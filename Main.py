@@ -14,10 +14,13 @@ class PlaceStudents:
         self.y_num = 6       # Antal platser y-led
 
         # Möjliga varianter för provsal är "Aula", "Hörsal", "zigzag", "normal"
-        self.room_type = "Aula_Halvfull"
-        if self.room_type == "Aula" or "Aula_Halvfull" or "Aula_Full":
-            self.x_num = 4
+        self.room_type = "Full"
+        if self.room_type == "Aula" or "Aula_Full":
+            self.x_num = 5
             self.y_num = 20
+        elif self.room_type == "Aula_Halvfull":
+            self.x_num = 4
+            self.y_num = 10
         info = [self.x_num, self.y_num, self.room_type]       # Samla info i info
 
         self.room = ClassRoom(info)      # Skapa klassrumet
