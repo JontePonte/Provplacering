@@ -21,7 +21,7 @@ Skapa metod för placering av eleverna
 
 Skapa medod för att rita upp klassrum med placering
 - Arcade istället
-- [ ] Få till klassrummet visuellt
+- Få till klassrummet visuellt
 - [ ] Placera ut möjliga platser i klassrummet
 - [ ] Skriva ut elevernas namn på platserna
 - [ ] Ordna olika provrum
