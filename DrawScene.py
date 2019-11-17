@@ -29,27 +29,30 @@ class PlacementDraw(arcade.Window):
         self.bench_height = 1
         self.bench_width = 1
 
-        if self.room_name == "Aula":
-            self.x_positions = [
-                int(2 * SCREEN_HEIGHT / 8),
-                int(4 * SCREEN_HEIGHT / 8),
-                int(6 * SCREEN_HEIGHT / 8),
-                int(7 * SCREEN_HEIGHT / 8),
-            ]
-            for i in range(self.y_num):
-                self.y_positions = int((i+1) * SCREEN_HEIGHT / self.y_num)
-
-            self.bench_height = int(SCREEN_HEIGHT / 30)
-            self.bench_width = int(SCREEN_WIDTH / 10)
-
         arcade.set_background_color(arcade.color.WHITE)
 
         # If you have sprite lists, you should create them here,
         # and set them to None
 
     def setup(self):
-        # Create your sprites and sprite lists here
-        pass
+
+        if self.room_name == "Aula":
+            self.x_bench_positions = [
+                int(1 * SCREEN_HEIGHT / 8),
+                int(2 * SCREEN_HEIGHT / 8),
+                int(3 * SCREEN_HEIGHT / 8),
+                int(5 * SCREEN_HEIGHT / 8),
+                int(6 * SCREEN_HEIGHT / 8),
+            ]
+
+            for i in range(self.y_num):
+                self.y_bench_positions.append(int((i + 1) * SCREEN_HEIGHT / self.y_num))
+
+            self.bench_height = int(SCREEN_HEIGHT / 30)
+            self.bench_width = int(SCREEN_WIDTH / 10)
+
+            print(self.x_positions)
+            print(self.y_positions)
 
     def draw_bench(self, x, y):
         """ Rita ut en skrivplats """
