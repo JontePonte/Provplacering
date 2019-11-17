@@ -1,9 +1,8 @@
 
 import arcade
 
-SCREEN_SIDE = 600
-SCREEN_WIDTH = SCREEN_SIDE
-SCREEN_HEIGHT = SCREEN_SIDE
+SCREEN_WIDTH = 600
+SCREEN_HEIGHT = 600
 
 
 class PlacementDraw(arcade.Window):
@@ -44,11 +43,11 @@ class PlacementDraw(arcade.Window):
 
             # Sätt x-koordinater för bänkarna i Aulan
             self.x_bench_positions = [
-                int(1 * SCREEN_HEIGHT / 8),
-                int(2 * SCREEN_HEIGHT / 8),
-                int(3 * SCREEN_HEIGHT / 8),
-                int(5 * SCREEN_HEIGHT / 8),
-                int(6 * SCREEN_HEIGHT / 8),
+                int(1 * SCREEN_WIDTH / 8),
+                int(2 * SCREEN_WIDTH / 8),
+                int(3 * SCREEN_WIDTH / 8),
+                int(5 * SCREEN_WIDTH / 8),
+                int(6 * SCREEN_WIDTH / 8),
             ]
             # Sätt x-koorsinater för skrivplatser i Aulan
             if self.room_name == "Aula_Halvfull":
@@ -91,12 +90,12 @@ class PlacementDraw(arcade.Window):
         arcade.draw_text("Scen", x - int(y_width * 0.50), y - int(y_width * 0.95),
                          arcade.color.BLACK, int(y_width * 0.5))
 
-
     def on_draw(self):
         """
         Render the screen.
         """
         arcade.start_render()
+        # Rita ut bänkarna utifrån x- & y-koordinater
         for x in self.x_bench_positions:
             for y in self.y_bench_positions:
                 self.draw_bench(x, y)
