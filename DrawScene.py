@@ -64,8 +64,6 @@ class PlacementDraw(arcade.Window):
             if self.room_name == "Aula_Halvfull":
                 self.y_positions = self.y_bench_positions[1::2]
 
-                print(len(self.x_positions))
-                print(len(self.y_positions))
             else:
                 self.y_positions = self.y_bench_positions
 

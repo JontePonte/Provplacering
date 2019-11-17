@@ -17,6 +17,7 @@ Skapa metod för placering av eleverna
 - Slumpvis placering av eleverna i rummet
 - Sprid ut tomma platser
 - Lägg in blockering för elever som inte bör sitta nära
+- [ ] Varna ifall det är för många elever
 - [ ] Varna ifall något går fel vid placeringen
 
 Skapa medod för att rita upp klassrum med placering
@@ -24,7 +25,7 @@ Skapa medod för att rita upp klassrum med placering
 - Få till klassrummet visuellt
 - Placera ut möjliga platser i klassrummet
 - Skriva ut elevernas namn på platserna
-- [ ] Snygga till platser och text
+- Snygga till platser och text
 - [ ] Ordna olika provrum
 - [ ] Animering av elever
 - [ ] Olika typer av bänkar
