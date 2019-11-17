@@ -63,8 +63,8 @@ class ClassRoom:
 
     def create_locations(self):
         """ Metod som skapar platserna i rummet """
-        for x in range(self.x_num):
-            for y in range(self.y_num):
+        for y in range(self.y_num):
+            for x in range(self.x_num):
                 # Skapa en plats med x- & y-koordinat
                 info = [x, y]
                 location = Location(info)

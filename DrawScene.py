@@ -69,6 +69,7 @@ class PlacementDraw(arcade.Window):
             else:
                 self.y_positions = self.y_bench_positions
 
+
     def draw_bench(self, x, y):
         """ Rita ut en skrivplats """
         arcade.draw_lrtb_rectangle_filled(x, x + self.bench_width, y, y - self.bench_height,
