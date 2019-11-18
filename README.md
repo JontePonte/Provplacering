@@ -26,6 +26,7 @@ Skapa medod för att rita upp klassrum med placering
 - Placera ut möjliga platser i klassrummet
 - Skriva ut elevernas namn på platserna
 - Snygga till platser och text
+- [ ] Helskärm
 - [ ] Ordna olika provrum
 - [ ] Animering av elever
 - [ ] Olika typer av bänkar
