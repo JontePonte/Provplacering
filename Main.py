@@ -10,27 +10,30 @@ class PlaceStudents:
     def __init__(self):
         """ Variabler som styr provsalens utseende """
 
-        self.x_num = 4       # Antal platser x-led
-        self.y_num = 10       # Antal platser y-led
+        self.x_num = 6       # Antal platser x-led
+        self.y_num = 6       # Antal platser y-led
 
         # Möjliga varianter för provsal är "Aula", "Hörsal", "zigzag", "normal"
         self.room_type = "Aula"
-
-        if self.room_type == "Aula" or "Aula_Full":
-            self.x_num = 5
-            self.y_num = 20
-        if self.room_type == "Aula_Halvfull":
-            self.x_num = 4
-            self.y_num = 10
-        info = [self.x_num, self.y_num, self.room_type]       # Samla info i info
-
-        self.room = ClassRoom(info)      # Skapa klassrumet
 
         # Ladda in klasslista
         self.students = self.load_text("Elevlista.txt")
         for i in range(len(self.students)):
             print(self.students[i])
-        self.mf = self.load_text("MF.txt")      # mf = Misstänkt Fusk. Dessa hamnar inte nära varandra
+        self.mf = self.load_text("MF.txt")  # mf = Misstänkt Fusk. Dessa hamnar inte nära varandra
+
+        if self.room_type == "Aula":
+            self.x_num = 5
+            self.y_num = 20
+
+            if len(self.students) <= 40:
+                self.x_num = 4
+                self.y_num = 10
+                self.room_type = "Aula_Halvfull"
+
+        info = [self.x_num, self.y_num, self.room_type]       # Samla info i info
+
+        self.room = ClassRoom(info)      # Skapa klassrumet
 
         # Placera ut eleverna
         self.room.placement(self.students, self.mf)
