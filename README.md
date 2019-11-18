@@ -19,6 +19,8 @@ Skapa metod för placering av eleverna
 - Lägg in blockering för elever som inte bör sitta nära
 - [ ] Varna ifall det är för många elever
 - [ ] Varna ifall något går fel vid placeringen
+- [ ] Ställ in aulan utifrån elevantal
+
 
 Skapa medod för att rita upp klassrum med placering
 - Arcade istället
@@ -26,7 +28,8 @@ Skapa medod för att rita upp klassrum med placering
 - Placera ut möjliga platser i klassrummet
 - Skriva ut elevernas namn på platserna
 - Snygga till platser och text
-- [ ] Helskärm
+- Helskärm
 - [ ] Ordna olika provrum
 - [ ] Animering av elever
 - [ ] Olika typer av bänkar
+
