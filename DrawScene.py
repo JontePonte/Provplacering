@@ -37,7 +37,7 @@ class PlacementDraw(arcade.Window):
     def setup(self):
 
         # Denna if fixar allt för "Aula"
-        if self.room_name == "Aula" or "Aula_Halvfull":
+        if self.room_name == "Aula" or self.room_name == "Aula_Halvfull":
             self.bench_height = int(SCREEN_HEIGHT / 30)     # Storlek för bänkar i Aulan
             self.bench_width = int(SCREEN_WIDTH / 10)
 
@@ -67,6 +67,19 @@ class PlacementDraw(arcade.Window):
 
             else:
                 self.y_positions = self.y_bench_positions
+
+        # Detta fixar allt för normala klassrum
+        else:
+            for x in range(self.x_num):
+                self.x_bench_positions.append(int((x + 1) * SCREEN_HEIGHT / self.x_num))
+            for y in range(self.y_num):
+                self.y_bench_positions.append(int((y + 1) * SCREEN_HEIGHT / self.y_num))
+
+            self.x_positions = self.x_bench_positions
+            self.y_positions = self.y_bench_positions
+
+            self.bench_width = 10
+            self.bench_height = 10
 
     def draw_bench(self, x, y):
         """ Rita ut en skrivplats """
@@ -140,7 +153,7 @@ class PlacementDraw(arcade.Window):
         self.draw_bench_numbers()
 
         # Rita ut scenen ifall provet är i Aulan
-        if self.room_name == "Aula" or "Aula_Full" or "Aula_Halvfull":
+        if self.room_name == "Aula" or self.room_name == "Aula_Halvfull":
             self.draw_aula_scene()
 
     def on_update(self, delta_time):
