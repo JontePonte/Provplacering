@@ -14,7 +14,7 @@ class PlaceStudents:
         self.y_num = 10       # Antal platser y-led
 
         # Möjliga varianter för provsal är "Aula", "Hörsal", "zigzag", "normal"
-        self.room_type = "Aula_Halvfull"
+        self.room_type = "Aula"
 
         if self.room_type == "Aula" or "Aula_Full":
             self.x_num = 5
