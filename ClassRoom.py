@@ -32,6 +32,7 @@ class ClassRoom:
         # Placera ut eleverna i mf först. De hamnar minst två platser ifrån varandra i x- & y-led
         for student in mf:
             placed = False
+            test = 0
             while not placed:
                 # De ges en slumpposition x, y
                 x = random.randint(0, self.x_num-1)
@@ -43,6 +44,11 @@ class ClassRoom:
                         # Om någon är upptagen så starta om
                         if location.occupied:
                             placed = False
+
+                test += 1       # Testa ifall placeringen inte fungerar och stoppa isf
+                if test > 200:
+                    print("To many students in MF. The students could not be placed.")
+                    exit()
 
             # Placera ut eleven på platsen med koordinaterna x & y
             for location in self.locations:

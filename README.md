@@ -5,7 +5,6 @@ utvecklat för teknik & naturprogrammen på Bromangymnasiet i Hudiksvall
 ## Roadmap
 
 Skapa class för klassrum
-- [ ] Antal platser och klassrumstyp får styra storleken 
 - Skapa class för plats
 
 Ordna system för att importera elevlistor
@@ -17,8 +16,8 @@ Skapa metod för placering av eleverna
 - Slumpvis placering av eleverna i rummet
 - Sprid ut tomma platser
 - Lägg in blockering för elever som inte bör sitta nära
-- [ ] Varna ifall det är för många elever
-- [ ] Varna ifall något går fel vid placeringen
+- Varna ifall det är för många elever
+- Varna ifall något går fel vid placeringen
 - Ställ in aulan utifrån elevantal
 
 

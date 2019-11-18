@@ -25,6 +25,9 @@ class PlaceStudents:
         if self.room_type == "Aula":    # Specialinställningar för Aula
             self.aula_settings()
 
+        if self.is_problems():          # Avbryt programmet ifall några problem dyker upp och berätta varför
+            exit()
+
         info = [self.x_num, self.y_num, self.room_type]       # Samla info i info
 
         self.room = ClassRoom(info)      # Skapa klassrumet
@@ -63,6 +66,19 @@ class PlaceStudents:
             self.x_num = 4
             self.y_num = 10
             self.room_type = "Aula_Halvfull"
+
+    def is_problems(self):
+        """ Sök upp eventuella problem så att programmet kan avslutas innan """
+        result = False
+        if len(self.students) > self.x_num * self.y_num:
+            print("Impossible! There are more students than places to put them")
+            result = True
+        for mf_student in self.mf:
+            if mf_student not in self.students:
+                print("There are students (or rows) in MF that are not in Elevlista")
+                result = True
+        return result
+
 
     def export_list(self):
         """ Exportera en .txt fil med all relevant information """
