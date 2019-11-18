@@ -25,6 +25,8 @@ class PlaceStudents:
         if self.room_type == "Aula":    # Specialinställningar för Aula
             self.aula_settings()
 
+        self.fix_list_problems()        # Fixa eventuella problem som kan lösas
+
         if self.is_problems():          # Avbryt programmet ifall några problem dyker upp och berätta varför
             exit()
 
@@ -69,16 +71,53 @@ class PlaceStudents:
 
     def is_problems(self):
         """ Sök upp eventuella problem så att programmet kan avslutas innan """
-        result = False
+        problem = False
+        # Kolla ifall eleverna får plats
         if len(self.students) > self.x_num * self.y_num:
             print("Impossible! There are more students than places to put them")
-            result = True
+            problem = True
+
+        # Kolla att namnen i Elevlista inte är för långa
+        for student in self.students:
+            if len(student) > 20:
+                print("There are to long names in Elevlista (", student, ")")
+                problem = True
+
+        # Kolla att eleverna i MF finns med i Elevlista
         for mf_student in self.mf:
             if mf_student not in self.students:
-                print("There are students (or rows) in MF that are not in Elevlista")
-                result = True
-        return result
+                if len(mf_student) == 0:
+                    name = "Empty Row"
+                else:
+                    name = mf_student
+                print("There is a student (", name, ") in MF that is not in Elevlista")
+                problem = True
 
+        return problem
+
+    def fix_list_problems(self):
+        """ Fixa eventuella problem med listorna som kan lösas """
+        # Plocka bort tomma rader i elevlista och låt användaren höra det
+        elevlista_empty = 0
+        for student in self.students:
+            if len(student) == 0:
+                elevlista_empty += 1
+        if elevlista_empty > 0:
+            self.students.remove("")
+            print("There are", str(elevlista_empty), "empty rows in Elevlista")
+
+        # Plocka bort tomma rader i MF och låt användaren höra det
+        mf_empty = 0
+        for student in self.mf:
+            if len(student) == 0:
+                mf_empty += 1
+        if mf_empty > 0:
+            self.mf.remove("")
+            print("There are", str(mf_empty), "empty rows in MF")
+
+        # Skryt lite
+        if mf_empty or elevlista_empty > 0:
+            print("Do not worry. The empty rows did not take up any space in the classroom")
 
     def export_list(self):
         """ Exportera en .txt fil med all relevant information """

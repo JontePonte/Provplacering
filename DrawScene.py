@@ -1,10 +1,7 @@
 
 import arcade
 import tkinter
-"""
-SCREEN_WIDTH = 600
-SCREEN_HEIGHT = 600
-"""
+
 screen = tkinter.Tk()
 screen.withdraw()
 SCREEN_WIDTH = screen.winfo_screenwidth()
@@ -104,7 +101,7 @@ class PlacementDraw(arcade.Window):
     def draw_bench_numbers(self):
         """ Rita ut numrering av bänkarna """
         # Aulan har lite speciell numrering. (Gäller egentligen bara "Aula_Halvfull")
-        if self.room_name == "Aula" or "Aula_Full" or "Aula_Halvfull":
+        if self.room_name == "Aula" or "Aula_Halvfull":
             x = 1
             y = 20
         # Annars räkna upp x och räkna ner y då 0,0 är vänster nere

@@ -6,11 +6,12 @@ utvecklat för teknik & naturprogrammen på Bromangymnasiet i Hudiksvall
 
 Skapa class för klassrum
 - Skapa class för plats
+- [ ] Fixa stöket med extra bänkar i aulan
 
 Ordna system för att importera elevlistor
 - Ta in namnlista som en list
 - [ ] Importera från formatet från skolportalen
-- [ ] Varna ifall listan har fel formalia
+- Varna ifall listan har fel formalia
 
 Skapa metod för placering av eleverna
 - Slumpvis placering av eleverna i rummet
