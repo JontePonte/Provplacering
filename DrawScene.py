@@ -10,6 +10,7 @@ screen.withdraw()
 SCREEN_WIDTH = screen.winfo_screenwidth()
 SCREEN_HEIGHT = screen.winfo_screenheight()
 
+
 class PlacementDraw(arcade.Window):
     """
     Rita upp classrummet och placera eleverna utifrån informationen i "Placement.txt"
@@ -38,22 +39,21 @@ class PlacementDraw(arcade.Window):
 
     def setup(self):
 
+        # Denna if fixar allt för "Aula"
         if self.room_name == "Aula" or "Aula_Halvfull":
-            # Storlek för bänkar i Aulan
-            self.bench_height = int(SCREEN_HEIGHT / 30)
+            self.bench_height = int(SCREEN_HEIGHT / 30)     # Storlek för bänkar i Aulan
             self.bench_width = int(SCREEN_WIDTH / 10)
 
-            # Sätt x-koordinater för bänkarna i Aulan
-            self.x_bench_positions = [
+            self.x_bench_positions = [                      # Sätt x-koordinater för bänkarna i Aulan
                 int(1 * SCREEN_WIDTH / 8),
                 int(2 * SCREEN_WIDTH / 8),
                 int(3 * SCREEN_WIDTH / 8),
                 int(5 * SCREEN_WIDTH / 8),
                 int(6 * SCREEN_WIDTH / 8),
             ]
-            # Sätt x-koorsinater för skrivplatser i Aulan
-            if self.room_name == "Aula_Halvfull":
-                self.x_positions = [
+
+            if self.room_name == "Aula_Halvfull":           # Sätt x-koorsinater för skrivplatser i Aulan
+                self.x_positions = [                        # Aula_Halvfull beter sig lite annorlunda
                     int(1 * SCREEN_WIDTH / 8),
                     int(3 * SCREEN_WIDTH / 8),
                     int(5 * SCREEN_WIDTH / 8),
@@ -62,12 +62,10 @@ class PlacementDraw(arcade.Window):
             else:
                 self.x_positions = self.x_bench_positions
 
-            # Sätt y-koordinater för bänkarna i Aulan
-            for i in range(20):
+            for i in range(20):                             # Sätt y-koordinater för bänkarna i Aulan
                 self.y_bench_positions.append(int((i + 1) * SCREEN_HEIGHT / (20 + 2)))
 
-            # Sätt y-koordinater för skrivplatser i Aulan
-            if self.room_name == "Aula_Halvfull":
+            if self.room_name == "Aula_Halvfull":           # Sätt y-koordinater för skrivplatser i Aulan
                 self.y_positions = self.y_bench_positions[1::2]
 
             else:

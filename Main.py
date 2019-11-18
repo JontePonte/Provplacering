@@ -13,7 +13,7 @@ class PlaceStudents:
         self.x_num = 6       # Antal platser x-led
         self.y_num = 6       # Antal platser y-led
 
-        # Möjliga varianter för provsal är "Aula", "Hörsal", "zigzag", "normal"
+        # Möjliga varianter för provsal är "Aula", "Normal", "Zigzag",
         self.room_type = "Aula"
 
         # Ladda in klasslista
@@ -23,13 +23,7 @@ class PlaceStudents:
         self.mf = self.load_text("MF.txt")  # mf = Misstänkt Fusk. Dessa hamnar inte nära varandra
 
         if self.room_type == "Aula":    # Specialinställningar för Aula
-            self.x_num = 5
-            self.y_num = 20
-            # Placera eleverna endast på varannan rad ifall det finns plats
-            if len(self.students) <= 40:
-                self.x_num = 4
-                self.y_num = 10
-                self.room_type = "Aula_Halvfull"
+            self.aula_settings()
 
         info = [self.x_num, self.y_num, self.room_type]       # Samla info i info
 
@@ -41,7 +35,6 @@ class PlaceStudents:
         # Skapa listan
         self.export_list()
 
-        """ Rita rummet """
         # Samla ihop input till draw
         info_to_draw = [
             self.room_type,
@@ -49,7 +42,7 @@ class PlaceStudents:
             self.y_num,
             self.room.locations
             ]
-        draw(info_to_draw)
+        draw(info_to_draw)  # Anropa funktionen "draw" i "DrawScene" som kör all arcade-kod
 
     def load_text(self, text):
         """ Importera klasslista från textfil """
@@ -60,6 +53,16 @@ class PlaceStudents:
                 item = item.replace(",", "").replace("\n", "")
                 list2.append(item)
         return list2
+
+    def aula_settings(self):
+        """ Fixa all specialinformation för Aulan """
+        self.x_num = 5
+        self.y_num = 20
+        # Placera eleverna endast på varannan rad ifall det finns plats
+        if len(self.students) <= 40:
+            self.x_num = 4
+            self.y_num = 10
+            self.room_type = "Aula_Halvfull"
 
     def export_list(self):
         """ Exportera en .txt fil med all relevant information """
