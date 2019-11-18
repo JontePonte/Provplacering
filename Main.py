@@ -2,6 +2,7 @@
 
 # Imports
 from ClassRoom import ClassRoom
+from DrawScene import draw
 
 
 class PlaceStudents:
@@ -13,7 +14,14 @@ class PlaceStudents:
         self.y_num = 10       # Antal platser y-led
 
         # Möjliga varianter för provsal är "Aula", "Hörsal", "zigzag", "normal"
-        self.room_type = "normal"
+        self.room_type = "Aula_Halvfull"
+
+        if self.room_type == "Aula" or "Aula_Full":
+            self.x_num = 5
+            self.y_num = 20
+        if self.room_type == "Aula_Halvfull":
+            self.x_num = 4
+            self.y_num = 10
         info = [self.x_num, self.y_num, self.room_type]       # Samla info i info
 
         self.room = ClassRoom(info)      # Skapa klassrumet
@@ -29,6 +37,16 @@ class PlaceStudents:
 
         # Skapa listan
         self.export_list()
+
+        """ Rita rummet """
+        # Samla ihop input till draw
+        info_to_draw = [
+            self.room_type,
+            self.x_num,
+            self.y_num,
+            self.room.locations
+            ]
+        draw(info_to_draw)
 
     def load_text(self, text):
         """ Importera klasslista från textfil """
@@ -72,4 +90,5 @@ class PlaceStudents:
         file.close()
 
 
+""" Kör programmet """
 run = PlaceStudents()
