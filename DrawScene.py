@@ -54,10 +54,10 @@ class PlacementDraw(arcade.Window):
             # Sätt x-koorsinater för skrivplatser i Aulan
             if self.room_name == "Aula_Halvfull":
                 self.x_positions = [
-                    int(1 * SCREEN_HEIGHT / 8),
-                    int(3 * SCREEN_HEIGHT / 8),
-                    int(5 * SCREEN_HEIGHT / 8),
-                    int(6 * SCREEN_HEIGHT / 8),
+                    int(1 * SCREEN_WIDTH / 8),
+                    int(3 * SCREEN_WIDTH / 8),
+                    int(5 * SCREEN_WIDTH / 8),
+                    int(6 * SCREEN_WIDTH / 8),
                 ]
             else:
                 self.x_positions = self.x_bench_positions
@@ -65,12 +65,9 @@ class PlacementDraw(arcade.Window):
             # Sätt y-koordinater för bänkarna i Aulan
             for i in range(20):
                 self.y_bench_positions.append(int((i + 1) * SCREEN_HEIGHT / (20 + 2)))
+
             # Sätt y-koordinater för skrivplatser i Aulan
             if self.room_name == "Aula_Halvfull":
-                for i in range(len(self.x_positions)):
-                    if self.x_positions[i] > 2:
-                        self.x_positions[i] += 1
-
                 self.y_positions = self.y_bench_positions[1::2]
 
             else:

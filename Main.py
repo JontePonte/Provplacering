@@ -22,10 +22,10 @@ class PlaceStudents:
             print(self.students[i])
         self.mf = self.load_text("MF.txt")  # mf = Misstänkt Fusk. Dessa hamnar inte nära varandra
 
-        if self.room_type == "Aula":
+        if self.room_type == "Aula":    # Specialinställningar för Aula
             self.x_num = 5
             self.y_num = 20
-
+            # Placera eleverna endast på varannan rad ifall det finns plats
             if len(self.students) <= 40:
                 self.x_num = 4
                 self.y_num = 10

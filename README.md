@@ -19,7 +19,7 @@ Skapa metod för placering av eleverna
 - Lägg in blockering för elever som inte bör sitta nära
 - [ ] Varna ifall det är för många elever
 - [ ] Varna ifall något går fel vid placeringen
-- [ ] Ställ in aulan utifrån elevantal
+- Ställ in aulan utifrån elevantal
 
 
 Skapa medod för att rita upp klassrum med placering
