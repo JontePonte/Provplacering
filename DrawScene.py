@@ -1,9 +1,14 @@
 
 import arcade
-
+import tkinter
+"""
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 600
-
+"""
+screen = tkinter.Tk()
+screen.withdraw()
+SCREEN_WIDTH = screen.winfo_screenwidth()
+SCREEN_HEIGHT = screen.winfo_screenheight()
 
 class PlacementDraw(arcade.Window):
     """
@@ -11,7 +16,7 @@ class PlacementDraw(arcade.Window):
     """
 
     def __init__(self, width, height, information):
-        super().__init__(width, height, information[0])
+        super().__init__(width, height, information[0], fullscreen=True)
 
         # Sortera informationen i "information"
         self.room_name = information[0]
