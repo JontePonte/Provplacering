@@ -168,7 +168,8 @@ class PlacementDraw(arcade.Window):
         """
         Called whenever the user lets off a previously pressed key.
         """
-        pass
+        if key == arcade.key.Q or arcade.key.ESCAPE:  # Avsluta
+            exit()
 
     def on_mouse_motion(self, x, y, delta_x, delta_y):
         """
