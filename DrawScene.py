@@ -84,6 +84,7 @@ class PlacementDraw(arcade.Window):
 
         # y = 0 är i botten på klassrummet så y_positions måste köras baklänges
         self.y_positions.reverse()
+        self.y_bench_positions.reverse()
 
     def draw_bench(self, x, y):
         """ Rita ut en skrivplats utifrån x- och y-koordinater """
@@ -102,8 +103,8 @@ class PlacementDraw(arcade.Window):
                          arcade.color.BLACK, int(y_width * 0.5))
 
         # Rita ut mixerbordet
-        x = self.x_bench_positions[2]
-        y = self.y_bench_positions[0]
+        x = self.x_bench_positions[2]           # Tredje kolumnen
+        y = self.y_bench_positions[19]          # Sista raden
         arcade.draw_lrtb_rectangle_filled(x, x + self.bench_width, y, y - self.bench_height * 1.2,
                                           arcade.color.BLACK)
         arcade.draw_text("Mixerbord", x + 1,
@@ -120,19 +121,12 @@ class PlacementDraw(arcade.Window):
 
     def draw_bench_numbers(self):
         """ Rita ut numrering av bänkarna """
-        # Aulan har lite speciell numrering. (Gäller egentligen bara "Aula_Halvfull")
-        if self.room_name == "Aula" or "Aula_Halvfull":
-            x = 1
-            y = 20
-        # Annars räkna upp x och räkna ner y då 0,0 är vänster nere
-        else:
-            x = 1
-            y = self.y_num
-
+        x = 1
+        y = 1
         # Rita ut x numrering
         for position in self.x_bench_positions:
             arcade.draw_text(str(x), position + int(self.bench_width / 2),
-                             self.y_bench_positions[-1] + int(self.bench_height * .5), arcade.color.BLACK,
+                             self.y_bench_positions[0] + int(self.bench_height * .5), arcade.color.BLACK,
                              int(self.bench_height / 2))
             x += 1
 
@@ -141,7 +135,7 @@ class PlacementDraw(arcade.Window):
             arcade.draw_text(str(y), self.x_positions[0] - int(self.bench_width / 2),
                              position + 1 - self.bench_height, arcade.color.BLACK,
                              int(self.bench_height / 2))
-            y -= 1
+            y += 1
 
     def on_draw(self):
         """
