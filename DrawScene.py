@@ -32,7 +32,7 @@ class PlacementDraw(arcade.Window):
         self.bench_height = 1
         self.bench_width = 1
 
-        arcade.set_background_color(arcade.color.WHITE)
+        arcade.set_background_color(arcade.color.ANTIQUE_WHITE)
 
     def setup(self):
 
