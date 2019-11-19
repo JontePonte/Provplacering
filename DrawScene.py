@@ -2,10 +2,11 @@
 import arcade
 import tkinter
 
+# Importera information för helskärm
 screen = tkinter.Tk()
 screen.withdraw()
-SCREEN_WIDTH = screen.winfo_screenwidth()
-SCREEN_HEIGHT = screen.winfo_screenheight()
+SCREEN_WIDTH = screen.winfo_screenwidth()       # SCREEN_WIDTH = antal pixlar i x-led
+SCREEN_HEIGHT = screen.winfo_screenheight()     # SCREEN_HEIGHT = antal pixlar i y-led
 
 
 class PlacementDraw(arcade.Window):
@@ -16,7 +17,7 @@ class PlacementDraw(arcade.Window):
     def __init__(self, width, height, information):
         super().__init__(width, height, information[0], fullscreen=True)
 
-        # Sortera informationen i "information"
+        # Sortera informationen i "information" från Main
         self.room_name = information[0]
         self.x_num = information[1]
         self.y_num = information[2]
@@ -57,7 +58,7 @@ class PlacementDraw(arcade.Window):
                     int(6 * SCREEN_WIDTH / 8),
                 ]
             else:
-                self.x_positions = self.x_bench_positions
+                self.x_positions = self.x_bench_positions   # Normal Aula
 
             for i in range(20):                             # Sätt y-koordinater för bänkarna i Aulan
                 self.y_bench_positions.append(int((i + 1) * SCREEN_HEIGHT / (20 + 2)))
@@ -75,21 +76,16 @@ class PlacementDraw(arcade.Window):
             for y in range(self.y_num):
                 self.y_bench_positions.append(int((y + 1) * SCREEN_HEIGHT / self.y_num))
 
-            self.x_positions = self.x_bench_positions
+            self.x_positions = self.x_bench_positions       # Eleverna sitter vid alla bänkar
             self.y_positions = self.y_bench_positions
 
             self.bench_width = 10
             self.bench_height = 10
 
     def draw_bench(self, x, y):
-        """ Rita ut en skrivplats """
+        """ Rita ut en skrivplats utifrån x- och y-koordinater """
         arcade.draw_lrtb_rectangle_filled(x, x + self.bench_width, y, y - self.bench_height,
                                           arcade.color.LIGHT_TAUPE)
-
-    def draw_location(self, x, y):
-        """ Rita ut en skrivplats """
-        arcade.draw_lrtb_rectangle_filled(x, x + self.bench_width, y, y - self.bench_height,
-                                          arcade.color.BLUE_GRAY)
 
     def draw_aula_scene(self):
         """ Rita ut en scenen i Aulan """
@@ -177,7 +173,7 @@ class PlacementDraw(arcade.Window):
         """
         Called whenever the user lets off a previously pressed key.
         """
-        if key == arcade.key.Q or arcade.key.ESCAPE:  # Avsluta
+        if key == arcade.key.Q or arcade.key.ESCAPE:  # Avsluta med "ESC" eller "Q"
             exit()
 
     def on_mouse_motion(self, x, y, delta_x, delta_y):
@@ -200,7 +196,7 @@ class PlacementDraw(arcade.Window):
 
 
 def draw(information):
-    """ Main method """
+    """ Main method. Denna funktion anropar hela denna fil """
     game = PlacementDraw(SCREEN_WIDTH, SCREEN_HEIGHT, information)
     game.setup()
     arcade.run()
