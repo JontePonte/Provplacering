@@ -10,7 +10,7 @@ SCREEN_HEIGHT = screen.winfo_screenheight()
 
 class PlacementDraw(arcade.Window):
     """
-    Rita upp classrummet och placera eleverna utifrån informationen i "Placement.txt"
+    Rita upp classrummet och placera eleverna utifrån informationen från Main
     """
 
     def __init__(self, width, height, information):
@@ -98,7 +98,7 @@ class PlacementDraw(arcade.Window):
         x_width = SCREEN_WIDTH / 5
         y_width = SCREEN_HEIGHT / 20
         arcade.draw_lrtb_rectangle_filled(x - x_width, x + x_width, y, y - y_width,
-                                          arcade.color.SPANISH_GRAY)
+                                          arcade.color.TAUPE_GRAY)
         arcade.draw_text("Scen", x - int(y_width * 0.50), y - int(y_width * 0.95),
                          arcade.color.BLACK, int(y_width * 0.5))
 

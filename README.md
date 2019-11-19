@@ -12,6 +12,7 @@ Ordna system för att importera elevlistor
 - Ta in namnlista som en list
 - [ ] Importera från formatet från skolportalen
 - Varna ifall listan har fel formalia
+- Fixa små felaktigheter från användaren i listorna
 
 Skapa metod för placering av eleverna
 - Slumpvis placering av eleverna i rummet
