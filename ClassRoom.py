@@ -29,17 +29,13 @@ class ClassRoom:
         # Tillsammans blir students & mf är lika lång som locations
         students += ["Empty"] * (num_locations - (num_mf + num_students))
 
-        if self.room_type == "Aula" or self.room_type == "Aula_Halvfull":
-            if self.room_type == "Aula":
-                x = 2
-                y = 19
-            if self.room_type == "Aula_Halvfull":
-                x = 1
-                y = 19
+        if self.room_type == "Aula":
+            x = 2
+            y = 19
             for location in self.locations:
                 if location.x_cor == x and location.y_cor == y:
                     location.occupied = True
-                    location.student_name = "Mixerbord"
+                    location.student_name = ""
 
         # Placera ut eleverna i mf först. De hamnar minst två platser ifrån varandra i x- & y-led
         for student in mf:
@@ -81,7 +77,7 @@ class ClassRoom:
                 i += 1
 
         for it in self.locations:
-            print(it.occupied, it.student_name)
+            print(it.occupied, it.student_name, it.x_cor, it.y_cor)
 
     def create_locations(self):
         """ Metod som skapar platserna i rummet """
