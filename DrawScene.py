@@ -109,7 +109,7 @@ class PlacementDraw(arcade.Window):
             if location.occupied:
                 arcade.draw_text(location.student_name, self.x_positions[location.x_cor] + 1,
                                  self.y_positions[location.y_cor] + 1 - self.bench_height, arcade.color.BLACK,
-                                 int(self.bench_height / 2))
+                                 int(self.bench_height * 0.7))
 
     def draw_bench_numbers(self):
         """ Rita ut numrering av bänkarna """
