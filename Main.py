@@ -73,7 +73,10 @@ class PlaceStudents:
         """ Sök upp eventuella problem så att programmet kan avslutas innan """
         problem = False
         # Kolla ifall eleverna får plats
-        if len(self.students) > self.x_num * self.y_num:
+        max_students = self.x_num * self.y_num
+        if self.room_type == "Aula":
+            max_students -= 1                   # Mixerbordet tar en plats också
+        if len(self.students) > max_students:
             print("Impossible! There are more students than places to put them")
             problem = True
 

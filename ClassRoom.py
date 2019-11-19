@@ -76,9 +76,6 @@ class ClassRoom:
                     location.occupied = True
                 i += 1
 
-        for it in self.locations:
-            print(it.occupied, it.student_name, it.x_cor, it.y_cor)
-
     def create_locations(self):
         """ Metod som skapar platserna i rummet """
         for y in range(self.y_num):

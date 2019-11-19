@@ -60,12 +60,13 @@ class PlacementDraw(arcade.Window):
             else:
                 self.x_positions = self.x_bench_positions   # Normal Aula
 
-            for i in range(20):                             # Sätt y-koordinater för bänkarna i Aulan
+            # Sätt y-koordinater för bänkarna i Aulan
+            for i in range(20):
                 self.y_bench_positions.append(int((i + 1) * SCREEN_HEIGHT / (20 + 2)))
 
-            if self.room_name == "Aula_Halvfull":           # Sätt y-koordinater för skrivplatser i Aulan
+            # Sätt y-koordinater för skrivplatser i Aulan
+            if self.room_name == "Aula_Halvfull":
                 self.y_positions = self.y_bench_positions[1::2]
-
             else:
                 self.y_positions = self.y_bench_positions
 
@@ -84,7 +85,8 @@ class PlacementDraw(arcade.Window):
 
         # y = 0 är i botten på klassrummet så y_positions måste köras baklänges
         self.y_positions.reverse()
-        self.y_bench_positions.reverse()
+        if self.room_name == "Aula_Halvfull":
+            self.y_bench_positions.reverse()
 
     def draw_bench(self, x, y):
         """ Rita ut en skrivplats utifrån x- och y-koordinater """
@@ -107,8 +109,8 @@ class PlacementDraw(arcade.Window):
         y = self.y_bench_positions[19]          # Sista raden
         arcade.draw_lrtb_rectangle_filled(x, x + self.bench_width, y, y - self.bench_height * 1.2,
                                           arcade.color.BLACK)
-        arcade.draw_text("Mixerbord", x + 1,
-                         y + 1 - self.bench_height, arcade.color.ANTIQUE_WHITE, int(self.bench_height * 0.7))
+        arcade.draw_text("Mixerbord", x + 1, y + 1 - self.bench_height, arcade.color.ANTIQUE_WHITE,
+                         int(self.bench_height * 0.7))
 
     def draw_student_names(self):
         """ Rita ut elevernas namn på de platserna som slumpats fram """
@@ -132,7 +134,7 @@ class PlacementDraw(arcade.Window):
 
         # Rita ut y-numrering
         for position in self.y_bench_positions:
-            arcade.draw_text(str(y), self.x_positions[0] - int(self.bench_width / 2),
+            arcade.draw_text(str(y), self.x_bench_positions[0] - int(self.bench_width / 2),
                              position + 1 - self.bench_height, arcade.color.BLACK,
                              int(self.bench_height / 2))
             y += 1
