@@ -91,6 +91,19 @@ class PlacementDraw(arcade.Window):
         if self.room_name == "Aula_Halvfull":
             self.y_bench_positions.reverse()
 
+        # Placera ut alla elevers namn på locations
+        for location in self.locations:
+            if location.occupied:
+                # Skapa en namnposition
+                name_position = NamePosition(location.student_name, self.bench_height)
+                name_position.x_pos = self.x_positions[location.x_cor]
+                name_position.y_pos = self.y_positions[location.y_cor]
+                name_position.x_goal = self.x_positions[location.x_cor]
+                name_position.y_goal = self.y_positions[location.y_cor]
+
+                # Sätt in den i name_positions
+                self.name_positions.append(name_position)
+
     def on_draw(self):
         """
         Render the screen.
@@ -101,8 +114,9 @@ class PlacementDraw(arcade.Window):
             for y in self.y_bench_positions:
                 self.draw_bench(x, y)
 
-        # Rita ut texten på elevernas namn
-        self.draw_student_names()
+        # Rita ut texten med elevernas namn
+        for name in self.name_positions:
+            name.draw()
 
         # Rita ut bänknummer
         self.draw_bench_numbers()
@@ -177,15 +191,6 @@ class PlacementDraw(arcade.Window):
         arcade.draw_text("Mixerbord", x + 1, y + 1 - self.bench_height, arcade.color.ANTIQUE_WHITE,
                          int(self.bench_height * 0.7))
 
-    def draw_student_names(self):
-        """ Rita ut elevernas namn på de platserna som slumpats fram """
-
-        for location in self.locations:
-            if location.occupied:
-                arcade.draw_text(location.student_name, self.x_positions[location.x_cor] + 1,
-                                 self.y_positions[location.y_cor] + 1 - self.bench_height, arcade.color.BLACK,
-                                 int(self.bench_height * 0.7))
-
     def draw_bench_numbers(self):
         """ Rita ut numrering av bänkarna """
         x = 1
@@ -216,7 +221,7 @@ class NamePosition:
         self.name = name
         self.bench_height = bench_height
 
-    def draw_name(self):
+    def draw(self):
         """ Rita ut elevernas namn """
         arcade.draw_text(self.name, self.x_pos + 1, self.y_pos + 1 - self.bench_height, arcade.color.BLACK,
                          int(self.bench_height * 0.7))
