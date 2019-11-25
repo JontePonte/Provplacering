@@ -33,6 +33,9 @@ class PlacementDraw(arcade.Window):
         self.bench_height = 1
         self.bench_width = 1
 
+        # Lista med elevernas namn
+        self.name_positions = []
+
         arcade.set_background_color(arcade.color.ANTIQUE_WHITE)
 
     def setup(self):
@@ -87,57 +90,6 @@ class PlacementDraw(arcade.Window):
         self.y_positions.reverse()
         if self.room_name == "Aula_Halvfull":
             self.y_bench_positions.reverse()
-
-    def draw_bench(self, x, y):
-        """ Rita ut en skrivplats utifrån x- och y-koordinater """
-        arcade.draw_lrtb_rectangle_filled(x, x + self.bench_width, y, y - self.bench_height,
-                                          arcade.color.LIGHT_TAUPE)
-
-    def draw_aula(self):
-        """ Rita ut en scenen i Aulan """
-        x = SCREEN_WIDTH / 2
-        y = SCREEN_HEIGHT
-        x_width = SCREEN_WIDTH / 5
-        y_width = SCREEN_HEIGHT / 20
-        arcade.draw_lrtb_rectangle_filled(x - x_width, x + x_width, y, y - y_width,
-                                          arcade.color.TAUPE_GRAY)
-        arcade.draw_text("Scen", x - int(y_width * 0.50), y - int(y_width * 0.95),
-                         arcade.color.BLACK, int(y_width * 0.5))
-
-        # Rita ut mixerbordet
-        x = self.x_bench_positions[2]           # Tredje kolumnen
-        y = self.y_bench_positions[19]          # Sista raden
-        arcade.draw_lrtb_rectangle_filled(x, x + self.bench_width, y, y - self.bench_height * 1.2,
-                                          arcade.color.BLACK)
-        arcade.draw_text("Mixerbord", x + 1, y + 1 - self.bench_height, arcade.color.ANTIQUE_WHITE,
-                         int(self.bench_height * 0.7))
-
-    def draw_student_names(self):
-        """ Rita ut elevernas namn på de platserna som slumpats fram """
-
-        for location in self.locations:
-            if location.occupied:
-                arcade.draw_text(location.student_name, self.x_positions[location.x_cor] + 1,
-                                 self.y_positions[location.y_cor] + 1 - self.bench_height, arcade.color.BLACK,
-                                 int(self.bench_height * 0.7))
-
-    def draw_bench_numbers(self):
-        """ Rita ut numrering av bänkarna """
-        x = 1
-        y = 1
-        # Rita ut x numrering
-        for position in self.x_bench_positions:
-            arcade.draw_text(str(x), position + int(self.bench_width / 2),
-                             self.y_bench_positions[0] + int(self.bench_height * .5), arcade.color.BLACK,
-                             int(self.bench_height / 2))
-            x += 1
-
-        # Rita ut y-numrering
-        for position in self.y_bench_positions:
-            arcade.draw_text(str(y), self.x_bench_positions[0] - int(self.bench_width / 2),
-                             position + 1 - self.bench_height, arcade.color.BLACK,
-                             int(self.bench_height / 2))
-            y += 1
 
     def on_draw(self):
         """
@@ -200,6 +152,74 @@ class PlacementDraw(arcade.Window):
         Called when a user releases a mouse button.
         """
         pass
+
+    def draw_bench(self, x, y):
+        """ Rita ut en skrivplats utifrån x- och y-koordinater """
+        arcade.draw_lrtb_rectangle_filled(x, x + self.bench_width, y, y - self.bench_height,
+                                          arcade.color.LIGHT_TAUPE)
+
+    def draw_aula(self):
+        """ Rita ut en scenen i Aulan """
+        x = SCREEN_WIDTH / 2
+        y = SCREEN_HEIGHT
+        x_width = SCREEN_WIDTH / 5
+        y_width = SCREEN_HEIGHT / 20
+        arcade.draw_lrtb_rectangle_filled(x - x_width, x + x_width, y, y - y_width,
+                                          arcade.color.TAUPE_GRAY)
+        arcade.draw_text("Scen", x - int(y_width * 0.50), y - int(y_width * 0.95),
+                         arcade.color.BLACK, int(y_width * 0.5))
+
+        # Rita ut mixerbordet
+        x = self.x_bench_positions[2]           # Tredje kolumnen
+        y = self.y_bench_positions[19]          # Sista raden
+        arcade.draw_lrtb_rectangle_filled(x, x + self.bench_width, y, y - self.bench_height * 1.2,
+                                          arcade.color.BLACK)
+        arcade.draw_text("Mixerbord", x + 1, y + 1 - self.bench_height, arcade.color.ANTIQUE_WHITE,
+                         int(self.bench_height * 0.7))
+
+    def draw_student_names(self):
+        """ Rita ut elevernas namn på de platserna som slumpats fram """
+
+        for location in self.locations:
+            if location.occupied:
+                arcade.draw_text(location.student_name, self.x_positions[location.x_cor] + 1,
+                                 self.y_positions[location.y_cor] + 1 - self.bench_height, arcade.color.BLACK,
+                                 int(self.bench_height * 0.7))
+
+    def draw_bench_numbers(self):
+        """ Rita ut numrering av bänkarna """
+        x = 1
+        y = 1
+        # Rita ut x numrering
+        for position in self.x_bench_positions:
+            arcade.draw_text(str(x), position + int(self.bench_width / 2),
+                             self.y_bench_positions[0] + int(self.bench_height * .5), arcade.color.BLACK,
+                             int(self.bench_height / 2))
+            x += 1
+
+        # Rita ut y-numrering
+        for position in self.y_bench_positions:
+            arcade.draw_text(str(y), self.x_bench_positions[0] - int(self.bench_width / 2),
+                             position + 1 - self.bench_height, arcade.color.BLACK,
+                             int(self.bench_height / 2))
+            y += 1
+
+
+class NamePosition:
+    """ Klass för animering och utritning av elevernas namn """
+    def __init__(self, name, bench_height):
+        self.x_pos = 0
+        self.y_pos = 0
+        self.x_goal = 0
+        self.y_goal = 0
+
+        self.name = name
+        self.bench_height = bench_height
+
+    def draw_name(self):
+        """ Rita ut elevernas namn """
+        arcade.draw_text(self.name, self.x_pos + 1, self.y_pos + 1 - self.bench_height, arcade.color.BLACK,
+                         int(self.bench_height * 0.7))
 
 
 def draw(information):

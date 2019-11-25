@@ -7,10 +7,10 @@ utvecklat för teknik & naturprogrammen på Bromangymnasiet i Hudiksvall
 Skapa class för klassrum
 - Skapa class för plats
 - [ ] Fixa stöket med extra bänkar i aulan
-- [ ] Rad 20 har en plats mindre
+- Rad 20 har en plats mindre
 - [ ] 5 Extra platser längst fram
 - [ ] 4 Extra platser längst bak
-- [ ] Mixerbordet tar upp plats vänster mitt rad 20 i aulan
+- Mixerbordet tar upp plats vänster mitt rad 20 i aulan
 
 Ordna system för att importera elevlistor
 - Ta in namnlista som en list
