@@ -96,8 +96,8 @@ class PlacementDraw(arcade.Window):
             if location.occupied:
                 # Skapa en namnposition
                 name_position = NamePosition(location.student_name, self.bench_height)
-                name_position.x_pos = self.x_positions[location.x_cor]
-                name_position.y_pos = self.y_positions[location.y_cor]
+                name_position.x_pos = 0     #self.x_positions[location.x_cor]
+                name_position.y_pos = 0     #self.y_positions[location.y_cor]
                 name_position.x_goal = self.x_positions[location.x_cor]
                 name_position.y_goal = self.y_positions[location.y_cor]
 
@@ -131,7 +131,9 @@ class PlacementDraw(arcade.Window):
         Normally, you'll call update() on the sprite lists that
         need it.
         """
-        pass
+        for name in self.name_positions:
+            name.update()
+
 
     def on_key_press(self, key, key_modifiers):
         """
@@ -213,10 +215,19 @@ class PlacementDraw(arcade.Window):
 class NamePosition:
     """ Klass för animering och utritning av elevernas namn """
     def __init__(self, name, bench_height):
+        # Variabler koplade till position
         self.x_pos = 0
         self.y_pos = 0
         self.x_goal = 0
         self.y_goal = 0
+
+        # Vatiabler kopplade till rörelse
+        self.x_vel = 0
+        self.y_vel = 0
+        self.x_acc = 1
+        self.y_acc = 1
+
+        self.move_rand = 1
 
         self.name = name
         self.bench_height = bench_height
@@ -225,6 +236,31 @@ class NamePosition:
         """ Rita ut elevernas namn """
         arcade.draw_text(self.name, self.x_pos + 1, self.y_pos + 1 - self.bench_height, arcade.color.BLACK,
                          int(self.bench_height * 0.7))
+
+    def update(self):
+        """ Förflytta namnen till rätt position """
+        if (self.x_goal - self.x_pos) > 0:
+            self.x_acc = min((self.x_goal - self.x_pos), 1)
+        else:
+            self.x_acc = max((self.x_goal - self.x_pos), -1)
+        if (self.y_goal - self.y_pos) > 0:
+            self.y_acc = min((self.y_goal - self.y_pos), 1)
+        else:
+            self.y_acc = max((self.y_goal - self.y_pos), -1)
+
+        # Acceleration i x- & y-led
+        if self.x_vel > 0:
+            self.x_vel = min((self.x_vel + self.x_acc), 2)
+        else:
+            self.x_vel = max((self.x_vel + self.x_acc), -2)
+        if self.y_vel > 0:
+            self.y_vel = min((self.y_vel + self.y_acc), 2)
+        else:
+            self.y_vel = max((self.y_vel + self.y_acc), -2)
+
+        # Förflyttning i x- & y-led
+        self.x_pos += self.x_vel
+        self.y_pos += self.y_vel
 
 
 def draw(information):
