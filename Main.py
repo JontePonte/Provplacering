@@ -3,6 +3,7 @@
 # Imports
 from ClassRoom import ClassRoom
 from DrawScene import draw
+import json
 
 
 class PlaceStudents:
@@ -35,7 +36,12 @@ class PlaceStudents:
         self.room = ClassRoom(info)      # Skapa klassrumet
 
         # Placera ut eleverna
-        self.room.placement(self.students, self.mf)
+        do_randomize = False                # Sätt "True" för att göra ny placering och "False" för att ladda gammal
+        if do_randomize:
+            self.room.placement(self.students, self.mf)
+            self.save_information()
+        else:
+            self.load_information()
 
         # Skapa listan
         self.export_list()
@@ -152,6 +158,35 @@ class PlaceStudents:
             file.write("\n")            # Byt rad då y ökar
 
         file.close()
+
+    def save_information(self):
+        """ Spara placeringsinfo """
+
+        data = {'locations': []}
+
+        # Spara all information som behövs i room.location
+        for location in self.room.locations:
+            data['locations'].append({
+                'name': location.student_name,
+                'x': location.x_cor,
+                'y': location.y_cor,
+                'ocup': location.occupied
+            })
+
+        with open('location_info.txt', 'w') as outfile:
+            json.dump(data, outfile)
+
+    def load_information(self):
+        """ Ladda in splaceringsinfo från fil """
+        with open('location_info.txt') as json_file:
+            data = json.load(json_file)
+            i = 0
+            for l in data['locations']:
+                self.room.locations[i].student_name = l['name']
+                self.room.locations[i].x_cor = l['x']
+                self.room.locations[i].y_cor = l['y']
+                self.room.locations[i].occupied = l['ocup']
+                i += 1
 
 
 """ Kör programmet """
