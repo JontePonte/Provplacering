@@ -39,4 +39,4 @@ Skapa medod för att rita upp klassrum med placering
 - [ ] Olika typer av bänkar
 - [ ] Optimera animation
 - [ ] Fixa animation för andra än rum än "Aula"
-- [ ] Fixa så att animationen kan köras flera gånger
+- Fixa så att animationen kan köras flera gånger
