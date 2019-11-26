@@ -1,6 +1,7 @@
 
 import arcade
 import tkinter
+import random
 
 # Importera information för helskärm
 screen = tkinter.Tk()
@@ -93,13 +94,20 @@ class PlacementDraw(arcade.Window):
 
         # Placera ut alla elevers namn på locations
         for location in self.locations:
-            if location.occupied:
+            if location.occupied and not (location.x_cor == 2 and location.y_cor == 19):    # Mixerbordet måste bort
                 # Skapa en namnposition
                 name_position = NamePosition(location.student_name, self.bench_height)
-                name_position.x_pos = 0     #self.x_positions[location.x_cor]
-                name_position.y_pos = 0     #self.y_positions[location.y_cor]
+                if self.room_name == "Aula" or self.room_name == "Aula_Halvfull":
+                    name_position.x_pos = 4 * SCREEN_WIDTH / 8
+                    name_position.y_pos = 0 - 100 * random.random()
+                else:
+                    name_position.x_pos = 0     #self.x_positions[location.x_cor]
+                    name_position.y_pos = 0     #self.y_positions[location.y_cor]
                 name_position.x_goal = self.x_positions[location.x_cor]
                 name_position.y_goal = self.y_positions[location.y_cor]
+
+                #name_position.x_pos = name_position.x_goal
+                #name_position.y_pos = name_position.y_goal
 
                 # Sätt in den i name_positions
                 self.name_positions.append(name_position)
@@ -227,6 +235,9 @@ class NamePosition:
         self.x_acc = 1
         self.y_acc = 1
 
+        self.y_vel_base = 5 + 2 * random.random()
+        self.x_vel_base = 4 + 2 * random.random()
+
         self.move_rand = 1
 
         self.name = name
@@ -239,24 +250,26 @@ class NamePosition:
 
     def update(self):
         """ Förflytta namnen till rätt position """
-        if (self.x_goal - self.x_pos) > 0:
-            self.x_acc = min((self.x_goal - self.x_pos), 1)
-        else:
-            self.x_acc = max((self.x_goal - self.x_pos), -1)
-        if (self.y_goal - self.y_pos) > 0:
-            self.y_acc = min((self.y_goal - self.y_pos), 1)
-        else:
-            self.y_acc = max((self.y_goal - self.y_pos), -1)
 
-        # Acceleration i x- & y-led
-        if self.x_vel > 0:
-            self.x_vel = min((self.x_vel + self.x_acc), 2)
-        else:
-            self.x_vel = max((self.x_vel + self.x_acc), -2)
-        if self.y_vel > 0:
-            self.y_vel = min((self.y_vel + self.y_acc), 2)
-        else:
-            self.y_vel = max((self.y_vel + self.y_acc), -2)
+        # Ställ in rätt y-hastighet
+        if self.y_pos < self.y_goal:
+            self.y_vel = self.y_vel_base
+        elif self.y_pos > self.y_goal:
+            self.y_vel = -self.y_vel_base
+
+        right_row = False
+        if self.y_goal - 10 < self.y_pos < self.y_goal + 10:
+            right_row = True
+
+        if right_row and self.x_pos < self.x_goal:
+            self.x_vel = self.x_vel_base
+        elif right_row and self. x_pos > self.x_goal:
+            self.x_vel = -self.x_vel_base
+
+        if abs(self.x_pos - self.x_goal) < 20:
+            self.x_vel = self.x_vel/10
+        if abs(self.y_pos - self.y_goal) < 10:
+            self.y_vel = self.y_vel/10
 
         # Förflyttning i x- & y-led
         self.x_pos += self.x_vel
