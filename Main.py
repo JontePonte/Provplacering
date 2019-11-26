@@ -162,15 +162,14 @@ class PlaceStudents:
     def save_information(self):
         """ Spara placeringsinfo """
 
-        data = {'locations': []}
-
+        data = {"locations": []}
         # Spara all information som behövs i room.location
         for location in self.room.locations:
-            data['locations'].append({
-                'name': location.student_name,
-                'x': location.x_cor,
-                'y': location.y_cor,
-                'ocup': location.occupied
+            data["locations"].append({
+                "name": location.student_name,
+                "x": location.x_cor,
+                "y": location.y_cor,
+                "ocupied": location.occupied
             })
 
         with open('location_info.txt', 'w') as outfile:
@@ -178,14 +177,14 @@ class PlaceStudents:
 
     def load_information(self):
         """ Ladda in splaceringsinfo från fil """
-        with open('location_info.txt') as json_file:
+        with open("location_info.txt") as json_file:
             data = json.load(json_file)
             i = 0
-            for l in data['locations']:
-                self.room.locations[i].student_name = l['name']
-                self.room.locations[i].x_cor = l['x']
-                self.room.locations[i].y_cor = l['y']
-                self.room.locations[i].occupied = l['ocup']
+            for l in data["locations"]:                             # All information från "locations_info" laddas
+                self.room.locations[i].student_name = l["name"]
+                self.room.locations[i].x_cor = l["x"]
+                self.room.locations[i].y_cor = l["y"]
+                self.room.locations[i].occupied = l["ocupied"]
                 i += 1
 
 
