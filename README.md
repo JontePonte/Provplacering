@@ -25,6 +25,8 @@ Skapa metod för placering av eleverna
 - Varna ifall det är för många elever
 - Varna ifall något går fel vid placeringen
 - Ställ in aulan utifrån elevantal
+- [ ] Val av rum, storlek mm för användaren
+- [ ] Snyggt gränssnitt/menyer
 
 
 Skapa medod för att rita upp klassrum med placering
@@ -37,6 +39,6 @@ Skapa medod för att rita upp klassrum med placering
 - [ ] Ordna olika provrum
 - Animering av elever
 - [ ] Olika typer av bänkar
-- [ ] Optimera animation
+- Optimera animation
 - [ ] Fixa animation för andra än rum än "Aula"
 - Fixa så att animationen kan köras flera gånger

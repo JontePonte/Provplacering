@@ -230,9 +230,11 @@ class NamePosition:
         # Vatiabler kopplade till rörelse
         self.x_vel = 0
         self.y_vel = 0
+        self.x_acc = 0.15 + 0.12 * (0.5 - random.random())
+        self.y_acc = 0.18 + 0.12 * (0.5 - random.random())
 
-        self.y_vel_base = 5 + 2 * random.random()
-        self.x_vel_base = 4 + 2 * random.random()
+        self.x_vel_max = 1.5 + 1 * (0.5 - random.random())
+        self.y_vel_max = 2 + 1 * (0.5 - random.random())
 
         self.name = name
         self.bench_height = bench_height
@@ -247,9 +249,9 @@ class NamePosition:
 
         # Ställ in rätt y-hastighet
         if self.y_pos < self.y_goal:
-            self.y_vel = self.y_vel_base
+            self.y_vel = min(self.y_vel + self.y_acc, self.y_vel_max)
         elif self.y_pos > self.y_goal:
-            self.y_vel = -self.y_vel_base
+            self.y_vel = max(self.y_vel - self.y_vel_max, -self.y_vel_max)
 
         # Se till at de stannar i y-led innan de börjar gå till sin plats
         right_row = False
@@ -258,15 +260,15 @@ class NamePosition:
 
         # Börja gå in mot raden
         if right_row and self.x_pos < self.x_goal:
-            self.x_vel = self.x_vel_base
+            self.x_vel = min(self.x_vel + self.x_acc, self.x_vel_max)
         elif right_row and self. x_pos > self.x_goal:
-            self.x_vel = -self.x_vel_base
+            self.x_vel = max(self.x_vel - self.x_vel_max, -self.x_vel_max)
 
         # Bromsa in när de närmar sig
-        if abs(self.x_pos - self.x_goal) < 12:
-            self.x_vel = self.x_vel/10
-        if abs(self.y_pos - self.y_goal) < 10:
-            self.y_vel = self.y_vel/10
+        if abs(self.x_pos - self.x_goal) < 2:
+            self.x_vel /= 20
+        if abs(self.y_pos - self.y_goal) < 2:
+            self.y_vel /= 20
 
         # Förflyttning i x- & y-led
         self.x_pos += self.x_vel
