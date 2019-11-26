@@ -98,16 +98,15 @@ class PlacementDraw(arcade.Window):
                 # Skapa en namnposition
                 name_position = NamePosition(location.student_name, self.bench_height)
                 if self.room_name == "Aula" or self.room_name == "Aula_Halvfull":
-                    name_position.x_pos = 4 * SCREEN_WIDTH / 8
+                    name_position.x_pos = 4 * SCREEN_WIDTH / 8 + 80 * (0.8 - random.random())
                     name_position.y_pos = 0 - 100 * random.random()
                 else:
-                    name_position.x_pos = 0     #self.x_positions[location.x_cor]
-                    name_position.y_pos = 0     #self.y_positions[location.y_cor]
+                    name_position.x_pos = 0
+                    name_position.y_pos = 0
+
+                # Målpositionen är skrivplatserna
                 name_position.x_goal = self.x_positions[location.x_cor]
                 name_position.y_goal = self.y_positions[location.y_cor]
-
-                #name_position.x_pos = name_position.x_goal
-                #name_position.y_pos = name_position.y_goal
 
                 # Sätt in den i name_positions
                 self.name_positions.append(name_position)
@@ -269,7 +268,7 @@ class NamePosition:
             self.x_vel = -self.x_vel_base
 
         # Bromsa in när de närmar sig
-        if abs(self.x_pos - self.x_goal) < 15:
+        if abs(self.x_pos - self.x_goal) < 12:
             self.x_vel = self.x_vel/10
         if abs(self.y_pos - self.y_goal) < 10:
             self.y_vel = self.y_vel/10
