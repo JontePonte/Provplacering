@@ -257,16 +257,19 @@ class NamePosition:
         elif self.y_pos > self.y_goal:
             self.y_vel = -self.y_vel_base
 
+        # Se till at de stannar i y-led innan de börjar gå till sin plats
         right_row = False
         if self.y_goal - 10 < self.y_pos < self.y_goal + 10:
             right_row = True
 
+        # Börja gå in mot raden
         if right_row and self.x_pos < self.x_goal:
             self.x_vel = self.x_vel_base
         elif right_row and self. x_pos > self.x_goal:
             self.x_vel = -self.x_vel_base
 
-        if abs(self.x_pos - self.x_goal) < 20:
+        # Bromsa in när de närmar sig
+        if abs(self.x_pos - self.x_goal) < 15:
             self.x_vel = self.x_vel/10
         if abs(self.y_pos - self.y_goal) < 10:
             self.y_vel = self.y_vel/10

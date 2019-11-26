@@ -35,6 +35,8 @@ Skapa medod för att rita upp klassrum med placering
 - Snygga till platser och text
 - Helskärm
 - [ ] Ordna olika provrum
-- [ ] Animering av elever
+- Animering av elever
 - [ ] Olika typer av bänkar
-
+- [ ] Optimera animation
+- [ ] Fixa animation för andra än rum än "Aula"
+- [ ] Fixa så att animationen kan köras flera gånger
