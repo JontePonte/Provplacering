@@ -100,6 +100,8 @@ class PlacementDraw(arcade.Window):
                 if self.room_name == "Aula" or self.room_name == "Aula_Halvfull":
                     name_position.x_pos = 4 * SCREEN_WIDTH / 8 + 80 * (0.8 - random.random())
                     name_position.y_pos = 0 - 100 * random.random()
+                    name_position.x_start = name_position.x_pos
+                    name_position.y_start = name_position.y_pos
                 else:
                     name_position.x_pos = 0
                     name_position.y_pos = 0
@@ -226,6 +228,8 @@ class NamePosition:
         self.y_pos = 0
         self.x_goal = 0
         self.y_goal = 0
+        self.x_start = 0
+        self.y_start = 0
 
         # Vatiabler kopplade till rörelse
         self.x_vel = 0
@@ -236,6 +240,12 @@ class NamePosition:
         self.x_vel_max = 1.5 + 1 * (0.5 - random.random())
         self.y_vel_max = 2 + 1 * (0.5 - random.random())
 
+        # Variabler som gör eleverna mer mänskliga
+        self.rand_chance = 0.2
+        self.x_rand = 0.2
+        self.y_rand = 0.2
+
+        # Variabler för skrivandet av namnenq
         self.name = name
         self.bench_height = bench_height
 
@@ -264,11 +274,21 @@ class NamePosition:
         elif right_row and self. x_pos > self.x_goal:
             self.x_vel = max(self.x_vel - self.x_vel_max, -self.x_vel_max)
 
+        # Slumpa lite rörelse
+        if random.random() < self.rand_chance:
+            if not right_row and self.x_pos > self.x_start:
+                self.x_vel = self.x_vel - self.x_rand * random.random()
+            elif not right_row and self.x_pos <= self.x_start:
+                self.x_vel = self.x_vel + self.x_rand * random.random()
+            self.y_vel = self.y_vel + self.y_rand * (0.5 - random.random())
+
         # Bromsa in när de närmar sig
         if abs(self.x_pos - self.x_goal) < 2:
-            self.x_vel /= 20
+            self.x_vel /= 10
+            if abs(self.y_pos - self.y_goal) < 2:
+                self.y_vel /= 10
         if abs(self.y_pos - self.y_goal) < 2:
-            self.y_vel /= 20
+            self.y_vel /= 4
 
         # Förflyttning i x- & y-led
         self.x_pos += self.x_vel

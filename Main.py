@@ -9,8 +9,7 @@ import json
 class PlaceStudents:
     """ Mainklass för att skapa klassrummet, placera ut eleverna och rita ut """
     def __init__(self):
-
-        #Variabler som styr provsalens utseende
+        # Variabler som styr provsalens utseende
         self.do_randomize = True  # Sätt "True" för att göra ny placering och "False" för att ladda gammal
         take_input = False
 
@@ -23,6 +22,11 @@ class PlaceStudents:
                     self.x_num = input("Hur många platser finns det i sidled?")
                     self.y_num = input("Hur många platser finns det i djupled?")
 
+            else:
+                self.room_type = "Aula"
+                self.do_randomize = False
+                self.x_num = 6
+                self.y_num = 6
         else:
             self.x_num = 6       # Antal platser x-led
             self.y_num = 6       # Antal platser y-led
