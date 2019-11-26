@@ -141,7 +141,6 @@ class PlacementDraw(arcade.Window):
         for name in self.name_positions:
             name.update()
 
-
     def on_key_press(self, key, key_modifiers):
         """
         Called whenever a key on the keyboard is pressed.
@@ -231,13 +230,9 @@ class NamePosition:
         # Vatiabler kopplade till rörelse
         self.x_vel = 0
         self.y_vel = 0
-        self.x_acc = 1
-        self.y_acc = 1
 
         self.y_vel_base = 5 + 2 * random.random()
         self.x_vel_base = 4 + 2 * random.random()
-
-        self.move_rand = 1
 
         self.name = name
         self.bench_height = bench_height

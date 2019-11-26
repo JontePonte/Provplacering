@@ -9,13 +9,26 @@ import json
 class PlaceStudents:
     """ Mainklass för att skapa klassrummet, placera ut eleverna och rita ut """
     def __init__(self):
-        """ Variabler som styr provsalens utseende """
 
-        self.x_num = 6       # Antal platser x-led
-        self.y_num = 6       # Antal platser y-led
+        #Variabler som styr provsalens utseende
+        self.do_randomize = True  # Sätt "True" för att göra ny placering och "False" för att ladda gammal
+        take_input = False
 
-        # Möjliga varianter för provsal är "Aula", "Normal", "Zigzag",
-        self.room_type = "Aula"
+        if take_input:
+            slumpa_y_n = input("Vill du göra en ny slumpning? (y/n)")
+            if slumpa_y_n == "y":
+                self.do_randomize = True
+                self.room_type = input("Vilket provrum är det? (Aula eller normal)")
+                if not self.room_type == "Aula":
+                    self.x_num = input("Hur många platser finns det i sidled?")
+                    self.y_num = input("Hur många platser finns det i djupled?")
+
+        else:
+            self.x_num = 6       # Antal platser x-led
+            self.y_num = 6       # Antal platser y-led
+
+            # Möjliga varianter för provsal är "Aula", "Normal", "Zigzag",
+            self.room_type = "Aula"
 
         # Ladda in klasslista
         self.students = self.load_text("Elevlista.txt")
@@ -23,12 +36,12 @@ class PlaceStudents:
             print(self.students[i])
         self.mf = self.load_text("MF.txt")  # mf = Misstänkt Fusk. Dessa hamnar inte nära varandra
 
-        if self.room_type == "Aula":    # Specialinställningar för Aula
+        if self.room_type == "Aula":     # Specialinställningar för Aula
             self.aula_settings()
 
-        self.fix_list_problems()        # Fixa eventuella problem som kan lösas
+        self.fix_list_problems()         # Fixa eventuella problem som kan lösas
 
-        if self.is_problems():          # Avbryt programmet ifall några problem dyker upp och berätta varför
+        if self.is_problems():           # Avbryt programmet ifall några problem dyker upp och berätta varför
             exit()
 
         info = [self.x_num, self.y_num, self.room_type]       # Samla info i info
@@ -36,8 +49,7 @@ class PlaceStudents:
         self.room = ClassRoom(info)      # Skapa klassrumet
 
         # Placera ut eleverna
-        do_randomize = False                # Sätt "True" för att göra ny placering och "False" för att ladda gammal
-        if do_randomize:
+        if self.do_randomize:
             self.room.placement(self.students, self.mf)
             self.save_information()
         else:
