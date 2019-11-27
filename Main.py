@@ -21,6 +21,10 @@ class PlaceStudents:
                 if not self.room_type == "Aula":
                     self.x_num = input("Hur många platser finns det i sidled?")
                     self.y_num = input("Hur många platser finns det i djupled?")
+                elif self.room_type == "Aula":
+                    self.room_type = "Aula"
+                    self.x_num = 5
+                    self.y_num = 20
 
             else:
                 self.room_type = "Aula"
