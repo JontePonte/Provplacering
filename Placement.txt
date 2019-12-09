@@ -9,7 +9,7 @@
 [Vilhelm G,0,7],[Samson M,1,7],[Empty,2,7],[Aleen M,3,7],[Empty,4,7],
 [Thanika P,0,8],[Empty,1,8],[Per H,2,8],[Empty,3,8],[Marcus Aker,4,8],
 [Faten A,0,9],[Amarildo R,1,9],[Marton K,2,9],[Miliam R,3,9],[Empty,4,9],
-[Wilma K,0,10],[Zsofia N,1,10],[Tuva E,2,10],[Tim	W,3,10],[Maja S,4,10],
+[Wilma K,0,10],[Zsofia N,1,10],[Tuva E,2,10],[Tim W,3,10],[Maja S,4,10],
 [Asia C,0,11],[Empty,1,11],[Anton L,2,11],[Empty,3,11],[Anna P,4,11],
 [Empty,0,12],[Leo R,1,12],[Tova F,2,12],[Empty,3,12],[Saga H B,4,12],
 [Maryam B,0,13],[Anton B J,1,13],[Lucas I B,2,13],[Erik K,3,13],[Empty,4,13],
