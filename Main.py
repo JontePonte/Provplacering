@@ -10,7 +10,7 @@ class PlaceStudents:
     """ Mainklass för att skapa klassrummet, placera ut eleverna och rita ut """
     def __init__(self):
         # Variabler som styr provsalens utseende
-        self.do_randomize = False  # Sätt "True" för att göra ny placering och "False" för att ladda gammal
+        self.do_randomize = True  # Sätt "True" för att göra ny placering och "False" för att ladda gammal
         take_input = False
 
         if take_input:
