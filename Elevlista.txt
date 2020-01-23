@@ -1,85 +1,84 @@
-Emil A
-William B
-Esther B
-Josef B
-Nils B
-Emil E (Te)
-Erik E
-Algot E G
-Hjalmar F
-Elliot F
-Albin G
-Jonas G
-Tilde H
-Lukas H
-Harriet H
-Noah K
-Anton L
-Lukas L
-Nilas L
-Axel N
-Isak P
-Olof P
-Olle R
-Alicia R
-Palace S
-Apolonia S
-Axel S
-Hugo W A
-Ahmad A
-Bashar A
-Nils A
-Gustav B
-Thea B
-Saron D
-Lea E
-Emma E
-Anna E
-Edvin E
-Elias E
-Emil E (Nt)
-Daniel G E
-Filimon G
-Tobias H
-Jonatan H
-Hossein H
-Moa H
-Filip J
-Emma Louise J
-Sara K
-Morteza M
-Elin N
-Benjamin N
-Ludwig N
-Donya R
-Mattis W
-Moa W
-Hampus B H
-Isabella B
-Natasha B
-Hanna D
-Elin E
-Elias F
-Anton F
-Tuva H
-Signe
-Ida I
-Liv J
-Alan K
-Axel K
-Emilia L
-Emma L
-Mathilda M
-Linn M E
-Elin M
-Ngoc N
-Ellis N
-Julia N
-Simon N
-Helin S Y
-Alice S
-Agnes T
-Ellen T
-Jakob W
-Jonna Aker
-Nils O S
+Emil A Te19b
+Emil B Te19b
+Emmy B Te19b
+Isac H Te19b
+Max H Te19b
+Cung Te19b
+Axelia Te19b
+Alexander Te19b
+Sofie R Te19b
+Isac S Te19b
+Melker T Te19b
+
+Emil A Te19a
+Leo A Te19a
+Meja A Te19a
+Thea A Te19a
+Olle B Te19a
+Nils B Te19a
+Hugo B Te19a
+Andreas Te19a
+Max F W Te19a
+Fynn H Te19a
+Pelle H Te19a
+Wille J Te19a
+Emil L Te19a
+Carl N Te19a
+Teodor N Te19a
+Olle P Te19a
+Isac P Te19a
+Gottfrid Te19a
+Robin P Te19a
+Anton S Te19a
+Rasmus T Te19a
+Oskar W Te19a
+
+Numan Na19a
+Astrid Na19a
+Yehya Na19a
+Rafal Na19a
+Fiona Na19a
+Ingrid Na19a
+Tia Na19a
+Iris Na19a
+Stina Na19a
+Nadia Na19a
+Alvin Na19a
+Elisabeth Na19a
+Tilda J Na19a
+Martin Na19a
+Carl Na19a
+Sandra Na19a
+William L Na19a
+Astrid Na19a
+Ellen Na19a
+Lucas Na19a
+Maja Na19a
+Max Na19a
+Ikaros Na19a
+William T Na19a
+Milla Na19a
+
+Hanan Na19b
+Linn Na19b
+Oscar Na19b
+Mohammad Na19b
+Emma Na19b
+John Na19b
+Erik Na19b
+Espen Na19b
+Moa J Na19b
+Philip Na19b
+Oskar Na19b
+Tilda Na19b
+Emelie Na19b
+Alaa Na19b
+Malin N Na19b
+Flavio Na19b
+Anna S Na19b
+Lovisa Na19b
+Mattias Na19b
+Cassandra Na19b
+Linnea Na19b
+Moa W Na19b
+Maja W Na19b

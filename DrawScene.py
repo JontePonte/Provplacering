@@ -252,7 +252,7 @@ class NamePosition:
     def draw(self):
         """ Rita ut elevernas namn """
         arcade.draw_text(self.name, self.x_pos + 1, self.y_pos + 1 - self.bench_height, arcade.color.BLACK,
-                         int(self.bench_height * 0.7))
+                         int(self.bench_height * 0.5))
 
     def update(self):
         """ Förflytta namnen till rätt position """
